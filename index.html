@@ -63,7 +63,7 @@
         // Debugging log to check if script runs
         console.log("Starting Portfolio App...");
 
-        const { useState, useEffect } = React;
+        const { useState, useEffect, useRef } = React;
 
         // --- ICONS (SVG Manual Definition for Single File Usage) ---
         // Defined manually to remove dependency on external script libraries
@@ -86,6 +86,12 @@
         const Layout = ({ size = 24 }) => (
             <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><line x1="3" x2="21" y1="9" y2="9"/><line x1="9" x2="9" y1="21" y2="9"/></svg>
         );
+        const Volume2 = ({ size = 24 }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+        );
+        const VolumeX = ({ size = 24 }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" x2="17" y1="9" y2="15"/><line x1="17" x2="23" y1="9" y2="15"/></svg>
+        );
 
         // --- COMPONENTS ---
 
@@ -98,12 +104,21 @@
         const NavBar = () => {
             const [isOpen, setIsOpen] = useState(false);
             const [scrolled, setScrolled] = useState(false);
+            const [isPlaying, setIsPlaying] = useState(true); // Default try to play
+
+            // Gantikan ID video YouTube di sini
+            // Contoh: Lofi Hip Hop radio
+            const YOUTUBE_VIDEO_ID = "jfKfPfyJRdk"; 
 
             useEffect(() => {
                 const handleScroll = () => setScrolled(window.scrollY > 20);
                 window.addEventListener('scroll', handleScroll);
                 return () => window.removeEventListener('scroll', handleScroll);
             }, []);
+
+            const toggleMusic = () => {
+                setIsPlaying(!isPlaying);
+            };
 
             const portfolioLinks = [
                 { name: 'Work', href: '#work' },
@@ -119,19 +134,47 @@
                             <span className="text-xl"></span> <span className="sr-only">Home</span>
                         </a>
                         
-                        <ul className="hidden md:flex space-x-8 text-gray-800">
-                            {portfolioLinks.map((link) => (
-                                <li key={link.name}>
-                                    <a href={link.href} className="hover:text-blue-600 transition-colors opacity-80 hover:opacity-100">
-                                        {link.name}
-                                    </a>
-                                </li>
-                            ))}
-                        </ul>
+                        <div className="flex items-center gap-6">
+                            {/* Desktop Menu */}
+                            <ul className="hidden md:flex space-x-8 text-gray-800">
+                                {portfolioLinks.map((link) => (
+                                    <li key={link.name}>
+                                        <a href={link.href} className="hover:text-blue-600 transition-colors opacity-80 hover:opacity-100">
+                                            {link.name}
+                                        </a>
+                                    </li>
+                                ))}
+                            </ul>
 
-                        <button className="md:hidden" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle Menu">
-                            {isOpen ? <XIcon size={18} /> : <MenuIcon size={18} />}
-                        </button>
+                            {/* Music Controller Button */}
+                            <button 
+                                onClick={toggleMusic} 
+                                className="p-2 rounded-full hover:bg-gray-200/50 transition-colors text-gray-800"
+                                aria-label={isPlaying ? "Mute Music" : "Play Music"}
+                            >
+                                {isPlaying ? <Volume2 size={16} /> : <VolumeX size={16} />}
+                            </button>
+
+                            {/* Mobile Menu Toggle */}
+                            <button className="md:hidden" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle Menu">
+                                {isOpen ? <XIcon size={18} /> : <MenuIcon size={18} />}
+                            </button>
+                        </div>
+
+                        {/* Hidden YouTube Iframe for Audio */}
+                        {isPlaying && (
+                            <div style={{ display: 'none' }}>
+                                <iframe 
+                                    width="560" 
+                                    height="315" 
+                                    src={`https://www.youtube.com/embed/${<iframe width="560" height="315" src="https://www.youtube.com/embed/3yBgLxgwS1U?si=3UuRSF01-xtv1mef" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>}?autoplay=1&loop=1&playlist=${<iframe width="560" height="315" src="https://www.youtube.com/embed/3yBgLxgwS1U?si=3UuRSF01-xtv1mef" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>}&controls=0&showinfo=0`} 
+                                    title="YouTube video player" 
+                                    frameBorder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowFullScreen
+                                ></iframe>
+                            </div>
+                        )}
                     </div>
 
                     {isOpen && (
@@ -179,157 +222,3 @@
 
         const ProjectCard = ({ title, subtitle, type, dark = false, image }) => (
             <article className={`relative group overflow-hidden rounded-[30px] p-8 md:p-12 transition-transform duration-500 hover:scale-[1.01] ${dark ? 'bg-black text-white' : 'bg-white text-black shadow-lg border border-gray-100'}`}>
-                <div className="relative z-10 flex flex-col h-full items-center text-center md:items-start md:text-left">
-                    <span className="text-xs font-bold uppercase tracking-widest opacity-60 mb-2">{type}</span>
-                    <h3 className="text-3xl md:text-4xl font-bold mb-2 tracking-tight">{title}</h3>
-                    <p className={`text-lg md:text-xl font-medium mb-6 ${dark ? 'text-gray-300' : 'text-gray-500'}`}>{subtitle}</p>
-                    <div className="mt-auto">
-                        <button className={`inline-flex items-center gap-1 font-medium ${dark ? 'text-blue-400' : 'text-[#0071e3]'} hover:underline`}>
-                            See case study <ChevronRight size={16} />
-                        </button>
-                    </div>
-                </div>
-                <div className="absolute inset-0 z-0 opacity-20 group-hover:opacity-30 transition-opacity">
-                    <img src={image} alt={title} className="w-full h-full object-cover" />
-                </div>
-            </article>
-        );
-
-        const SpecItem = ({ icon: Icon, title, desc }) => (
-            <div className="flex flex-col items-center text-center p-6 fade-in-up">
-                <div className="mb-4 text-gray-900">
-                    <Icon size={48} strokeWidth={1} />
-                </div>
-                <h4 className="text-lg font-semibold text-gray-900 mb-2">{title}</h4>
-                <p className="text-sm text-gray-500 leading-relaxed max-w-xs">{desc}</p>
-            </div>
-        );
-
-        const ApplePortfolio = () => {
-            useEffect(() => {
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('visible');
-                        }
-                    });
-                }, { threshold: 0.1 });
-
-                document.querySelectorAll('.fade-in-up').forEach((el) => observer.observe(el));
-                return () => observer.disconnect();
-            }, []);
-
-            return (
-                <div className="antialiased text-[#1d1d1f] bg-[#f5f5f7] selection:bg-[#0071e3] selection:text-white">
-                    <NavBar />
-                    <Hero />
-
-                    <Section id="work">
-                        <div className="text-center mb-16 fade-in-up">
-                            <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-4">Portfoli<span className="text-gray-400">OS</span>.</h2>
-                            <p className="text-xl text-gray-500">The power of design. In your hands.</p>
-                        </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4">
-                            <div className="md:col-span-2 aspect-[16/9] md:aspect-[21/9]">
-                                <ProjectCard 
-                                    type="Corporate Identity"
-                                    title="PETRONAS"
-                                    subtitle="Fueling the visual narrative of a nation."
-                                    image="https://images.unsplash.com/photo-1567789884554-0b844b597180?auto=format&fit=crop&q=80&w=2000"
-                                    dark={true}
-                                />
-                            </div>
-                            <div className="aspect-square md:aspect-[4/3]">
-                                <ProjectCard 
-                                    type="Government Sector"
-                                    title="Ministry of Finance"
-                                    subtitle="Digital campaigns & Live Productions."
-                                    image="https://images.unsplash.com/photo-1555431189-0fabf2667795?auto=format&fit=crop&q=80&w=1000"
-                                />
-                            </div>
-                            <div className="aspect-square md:aspect-[4/3]">
-                                <ProjectCard 
-                                    type="Hospitality"
-                                    title="Geno Hotel"
-                                    subtitle="End-to-end luxury visual experience."
-                                    image="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=1000"
-                                    dark={true}
-                                />
-                            </div>
-                        </div>
-                    </Section>
-
-                    <Section id="services" className="bg-[#f5f5f7]">
-                        <div className="max-w-[1200px] mx-auto">
-                            <h3 className="text-3xl font-bold text-center mb-16 tracking-tight">Which creative solution is right for you?</h3>
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 divide-y md:divide-y-0 md:divide-x divide-gray-200">
-                                <SpecItem 
-                                    icon={Layout} 
-                                    title="Graphic Design" 
-                                    desc="Branding, UI/UX, and Print. Pixel-perfect precision for corporate and creative needs." 
-                                />
-                                <SpecItem 
-                                    icon={Camera} 
-                                    title="Photography" 
-                                    desc="Event, Wedding, Product. Capturing real emotions and authentic moments." 
-                                />
-                                <SpecItem 
-                                    icon={Globe} 
-                                    title="Digital Strategy" 
-                                    desc="Social media content and live-stream production experience with top government agencies." 
-                                />
-                            </div>
-                        </div>
-                    </Section>
-
-                    <section id="about" className="bg-white py-32 overflow-hidden">
-                        <div className="max-w-[980px] mx-auto px-6">
-                            <div className="grid md:grid-cols-2 gap-12 items-center">
-                                <div className="fade-in-up order-2 md:order-1">
-                                    <h2 className="text-4xl font-bold mb-6 tracking-tight">Design.<br/> It's not just how it looks.</h2>
-                                    <p className="text-gray-500 text-lg leading-relaxed mb-6">
-                                        My journey began in Shah Alam. From the disciplined halls of MSU to the high-stakes environment of MOF and Petronas, I learned that design carries responsibility.
-                                    </p>
-                                    <p className="text-gray-500 text-lg leading-relaxed">
-                                        It tells stories. It represents values. Whether it's capturing a fleeting moment through photography or crafting a corporate identity, my work is honest, thoughtful, and human.
-                                    </p>
-                                </div>
-                                <div className="fade-in-up order-1 md:order-2 flex justify-center">
-                                    <div className="w-64 h-64 md:w-80 md:h-80 bg-gray-100 rounded-full flex items-center justify-center relative overflow-hidden shadow-inner">
-                                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=600" alt="Profile" className="w-full h-full object-cover opacity-90 hover:scale-110 transition-transform duration-700" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    <footer id="footer" className="bg-[#f5f5f7] text-xs text-gray-500 py-12 border-t border-gray-200">
-                        <div className="max-w-[980px] mx-auto px-6">
-                            <div className="mb-8 pb-8 border-b border-gray-200">
-                                <p className="mb-2">1. Design services are subject to availability.</p>
-                                <p>2. Photography bookings require advanced notice.</p>
-                            </div>
-                            <div className="flex flex-col md:flex-row justify-between items-center pt-8">
-                                <div className="mb-4 md:mb-0">
-                                    <p>Copyright © 2024 Untitled Design. All rights reserved.</p>
-                                </div>
-                                <div className="flex space-x-6">
-                                    <a href="#" className="hover:text-gray-900 transition-colors">Privacy</a>
-                                    <a href="#" className="hover:text-gray-900 transition-colors">Contact</a>
-                                    <span className="inline-flex items-center gap-1">Malaysia <Globe size={12} /></span>
-                                </div>
-                            </div>
-                        </div>
-                    </footer>
-                </div>
-            );
-        };
-
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<ApplePortfolio />);
-        
-        console.log("Portfolio mounted successfully.");
-    </script>
-</body>
-</html>
