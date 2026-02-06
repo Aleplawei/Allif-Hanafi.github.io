@@ -1,654 +1,438 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="ms" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- SEO & LinkedIn Optimization (Shah Alam Injection) -->
-    <title>Allif Hanafi | Creative Lead & Graphic Designer Shah Alam</title>
-    <meta name="description" content="Allif Hanafi is a professional Creative Designer based in Shah Alam, Selangor. Expert in Corporate Branding (Petronas/MOF), UI/UX Design, and High-End Visual Communication.">
-    <meta name="keywords" content="Graphic Designer Shah Alam, Creative Lead Selangor, Web Designer Malaysia, UI/UX Expert Shah Alam, Branding Specialist, Allif Hanafi, Petronas Designer">
-    <meta name="author" content="Allif Hanafi">
-    <meta name="robots" content="index, follow">
-    <meta name="geo.region" content="MY-10" />
-    <meta name="geo.placename" content="Shah Alam" />
-    
-    <!-- Open Graph / LinkedIn -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://allifhanafi.github.io/">
-    <meta property="og:title" content="Allif Hanafi | Creative Designer Portfolio">
-    <meta property="og:description" content="Precision meets Creativity. Explore the portfolio of Allif Hanafi, a Shah Alam-based designer crafting corporate and digital experiences.">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop">
-
-    <!-- Tailwind CSS -->
+    <title>AURA Athletics | Prestasi Tanpa Batas</title>
+    <!-- Tailwind CSS (Framework untuk penggayaan pantas & moden) -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter (Mirip San Francisco Apple) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Phosphor Icons (Ikon Minimalis) -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f5f5f7; /* Apple's light gray background */
+            color: #1d1d1f;
+        }
+        
+        /* Custom Animations */
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        /* Hide scrollbar for gallery but keep functionality */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+    
+    <!-- Konfigurasi Tema Tailwind -->
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
-                        brand: {
-                            black: '#000000',
-                            dark: '#050505',
-                            accent: '#FF2A2A', /* Apple Red/Orange Hybrid */
-                            surface: 'rgba(28, 28, 30, 0.6)',
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    animation: {
-                        'fade-in': 'fadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-                        'slide-up': 'slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-                        'liquid': 'liquidFlow 6s ease infinite',
-                        'pulse-slow': 'pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                    },
-                    keyframes: {
-                        fadeIn: {
-                            '0%': { opacity: '0' },
-                            '100%': { opacity: '1' },
-                        },
-                        slideUp: {
-                            '0%': { opacity: '0', transform: 'translateY(40px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        },
-                        liquidFlow: {
-                            '0%': { backgroundPosition: '0% 50%' },
-                            '50%': { backgroundPosition: '100% 50%' },
-                            '100%': { backgroundPosition: '0% 50%' },
+                        aura: {
+                            black: '#1d1d1f',
+                            blue: '#0071e3', /* Apple Blue */
+                            gray: '#86868b',
+                            light: '#f5f5f7'
                         }
                     }
                 }
             }
         }
     </script>
-    
-    <!-- React & Babel -->
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- JSON-LD Structured Data for Google SEO -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Allif Hanafi",
-      "jobTitle": "Creative Lead & Graphic Designer",
-      "url": "https://allifhanafi.github.io",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Shah Alam",
-        "addressRegion": "Selangor",
-        "addressCountry": "Malaysia"
-      }
-    }
-    </script>
-
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-            background-color: #000000;
-            color: #ffffff;
-        }
-
-        /* Loading State */
-        #root:empty {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: #000;
-            color: #333;
-            font-size: 0.8rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-        }
-        #root:empty::after {
-            content: "Initializing System...";
-            animation: pulse 1.5s infinite;
-        }
-
-        /* --- Liquid Engine 2.0 (Text) --- */
-        .liquid-text {
-            background-size: 200% auto;
-            background-image: linear-gradient(
-                90deg, 
-                #FF2A2A 0%, 
-                #FF9500 25%, 
-                #FFFFFF 50%, 
-                #007AFF 75%, 
-                #FF2A2A 100%
-            );
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            animation: liquidFlow 4s linear infinite;
-            filter: drop-shadow(0 0 30px rgba(255, 42, 42, 0.5));
-        }
-
-        /* Glassmorphism Header */
-        .glass-header {
-            background: rgba(0, 0, 0, 0.01); /* Ultra transparent initially */
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            transition: all 0.5s ease;
-        }
-        .glass-header.scrolled {
-            background: rgba(0, 0, 0, 0.6);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        /* Premium Button Styles */
-        .btn-apple {
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
-        
-        .btn-apple::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .btn-apple:hover {
-            transform: scale(1.02);
-            box-shadow: 0 0 20px rgba(255, 42, 42, 0.4);
-        }
-        
-        .btn-apple:active {
-            transform: scale(0.96);
-        }
-        
-        .btn-apple:hover::after {
-            opacity: 1;
-        }
-
-        /* Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #000; }
-        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #555; }
-    </style>
 </head>
-<body class="antialiased dark">
-    <div id="root"></div>
+<body class="antialiased">
 
-    <script type="text/babel">
-        // Error Trap for easy debugging
-        window.onerror = function(message, source, lineno, colno, error) {
-            console.error(error);
-            const root = document.getElementById('root');
-            if(root && root.innerHTML === "") {
-                root.innerHTML = `<div style="color:red; padding:20px; text-align:center;">
-                    <h3>System Error</h3>
-                    <p>${message}</p>
-                    <p style="font-size:10px; color:#555">Check Console for details</p>
-                </div>`;
-            }
-        };
-
-        const { useState, useEffect, useRef } = React;
-
-        // --- ICONS ---
-        const Icons = {
-            ArrowRight: () => <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>,
-            ArrowLeft: () => <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>,
-            ArrowDown: () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>,
-            X: () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>,
-            Mail: () => <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>,
-            WhatsApp: () => <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 3.4L3 21"/></svg>,
-            Menu: () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>,
-            Moon: () => <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>,
-            Sun: () => <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>,
-            LinkedIn: () => <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>,
-            Download: () => <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
-        };
-
-        // --- COMPONENTS ---
-
-        const Button = ({ children, onClick, className = '', variant = 'primary' }) => {
-            const baseClass = "btn-apple px-6 py-2.5 rounded-full font-medium text-sm flex items-center gap-2 cursor-pointer select-none";
-            const variants = {
-                primary: "bg-white text-black border border-transparent",
-                glass: "bg-white/10 backdrop-blur-md border border-white/20 text-white",
-                outline: "border border-white/20 text-white hover:bg-white/5"
-            };
-            const activeVariant = variants[variant] || variants.primary;
-            
-            return (
-                <button 
-                    onClick={onClick} 
-                    className={`${baseClass} ${activeVariant} ${className}`}
-                >
-                    {children}
-                </button>
-            );
-        };
-
-        const ContactModal = ({ isOpen, onClose }) => {
-            if (!isOpen) return null;
-            return (
-                <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-                    <div className="absolute inset-0 bg-black/90 backdrop-blur-xl transition-opacity" onClick={onClose}></div>
-                    <div className="relative w-full max-w-md bg-[#121212] border border-white/10 p-8 rounded-3xl shadow-2xl animate-slide-up">
-                        <button onClick={onClose} className="absolute top-4 right-4 text-gray-500 hover:text-white transition-colors"><Icons.X /></button>
-                        <h2 className="text-2xl font-bold mb-2 text-white">Direct Connect</h2>
-                        <p className="text-gray-500 text-sm mb-6">Choose your preferred communication channel.</p>
-                        
-                        <div className="grid grid-cols-1 gap-4">
-                            <button onClick={() => window.open('mailto:hello@allifhanafi.com')} className="w-full bg-white/5 hover:bg-white/10 border border-white/10 text-white font-medium py-4 rounded-xl transition-all flex items-center justify-center gap-3">
-                                <Icons.Mail /> Email Inquiry
-                            </button>
-                            <button onClick={() => window.open('https://wa.me/60123456789')} className="w-full bg-[#25D366]/20 hover:bg-[#25D366]/30 border border-[#25D366]/50 text-[#25D366] font-medium py-4 rounded-xl transition-all flex items-center justify-center gap-3">
-                                <Icons.WhatsApp /> WhatsApp Business
-                            </button>
-                        </div>
-                    </div>
+    <!-- NAVIGATION BAR -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-12">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <i class="ph-fill ph-infinity text-2xl mr-2"></i>
+                    <span class="font-bold text-lg tracking-tight">AURA</span>
                 </div>
-            );
-        };
 
-        const NavBar = ({ darkMode, toggleTheme, onContact, navigateHome }) => {
-            const [scrolled, setScrolled] = useState(false);
-            const [mobileMenu, setMobileMenu] = useState(false);
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 text-xs font-medium text-gray-600">
+                    <a href="#lelaki" class="hover:text-black transition-colors">Project</a>
+                    <a href="#wanita" class="hover:text-black transition-colors">About</a>
+                    <a href="#koleksi" class="hover:text-black transition-colors">Milestone</a>
+                    <a href="#teknologi" class="hover:text-black transition-colors">Teknologi</a>
+                    <a href="#aksesori" class="hover:text-black transition-colors">Contact</a>
+                </div>
 
-            useEffect(() => {
-                const handleScroll = () => setScrolled(window.scrollY > 50);
-                window.addEventListener('scroll', handleScroll);
-                return () => window.removeEventListener('scroll', handleScroll);
-            }, []);
-
-            const navs = [
-                { id: 'projects', label: 'Selected Works' },
-                { id: 'about', label: 'Meet : Creator' },
-                { id: 'expertise', label: 'Expertise' },
-            ];
-
-            const handleNavClick = (id) => {
-                navigateHome();
-                setTimeout(() => {
-                    const el = document.getElementById(id);
-                    if (el) el.scrollIntoView({ behavior: 'smooth' });
-                }, 100);
-                setMobileMenu(false);
-            };
-
-            return (
-                <nav className={`fixed top-0 w-full z-50 glass-header ${scrolled ? 'scrolled py-4' : 'py-6'}`}>
-                    <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-                        <div 
-                            className="text-xl font-bold tracking-tight cursor-pointer z-50 text-white hover:opacity-70 transition-opacity"
-                            onClick={() => { navigateHome(); window.scrollTo({top:0, behavior:'smooth'}); }}
-                        >
-                            Allif H.
-                        </div>
-
-                        <div className="hidden md:flex items-center gap-8">
-                            {navs.map(nav => (
-                                <button
-                                    key={nav.id}
-                                    onClick={() => handleNavClick(nav.id)}
-                                    className="text-sm font-medium transition-colors text-gray-400 hover:text-white"
-                                >
-                                    {nav.label}
-                                </button>
-                            ))}
-                            <div className="h-4 w-[1px] bg-white/10"></div>
-                            <button onClick={toggleTheme} className="text-gray-400 hover:text-white transition-colors">
-                                {darkMode ? <Icons.Sun /> : <Icons.Moon />}
-                            </button>
-                            <Button variant="glass" onClick={onContact} className="!py-2 !px-4 !text-xs">
-                                Contact
-                            </Button>
-                        </div>
-
-                        <button className="md:hidden z-50 text-white" onClick={() => setMobileMenu(!mobileMenu)}>
-                            {mobileMenu ? <Icons.X /> : <Icons.Menu />}
-                        </button>
-                    </div>
-
-                    {mobileMenu && (
-                        <div className="fixed inset-0 bg-black z-40 flex flex-col items-center justify-center gap-8 animate-fade-in md:hidden">
-                            {navs.map(nav => (
-                                <button key={nav.id} onClick={() => handleNavClick(nav.id)} className="text-2xl font-bold text-white">
-                                    {nav.label}
-                                </button>
-                            ))}
-                            <button onClick={() => { onContact(); setMobileMenu(false); }} className="text-xl text-brand-accent font-bold">Contact Me</button>
-                        </div>
-                    )}
-                </nav>
-            );
-        };
-
-        // --- VIEWS ---
-
-        const ProjectDetailView = ({ project, onBack }) => {
-            useEffect(() => {
-                window.scrollTo(0, 0);
-            }, []);
-
-            return (
-                <div className="min-h-screen pt-32 pb-20 px-6 max-w-6xl mx-auto animate-slide-up bg-black relative z-20">
-                    <button 
-                        onClick={onBack}
-                        className="mb-8 flex items-center gap-2 text-sm text-gray-500 hover:text-white transition-colors uppercase tracking-widest font-bold"
-                    >
-                        <Icons.ArrowLeft /> Back to Index
+                <!-- Icons Right -->
+                <div class="flex items-center space-x-4">
+                    <button class="text-gray-600 hover:text-black transition-colors">
+                        <i class="ph ph-magnifying-glass text-lg"></i>
                     </button>
+                    <button class="text-gray-600 hover:text-black transition-colors relative" onclick="openCart()">
+                        <i class="ph ph-bag text-lg"></i>
+                        <span id="cart-count" class="absolute -top-1 -right-1 bg-aura-blue text-white text-[10px] w-3 h-3 flex items-center justify-center rounded-full hidden">0</span>
+                    </button>
+                    <!-- Mobile Menu Button -->
+                    <button class="md:hidden text-gray-600" onclick="toggleMenu()">
+                        <i class="ph ph-list text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
 
-                    <h1 className="text-5xl md:text-8xl font-bold mb-6 text-white leading-[0.9] tracking-tighter">{project.title}</h1>
-                    <div className="flex flex-wrap gap-4 mb-12">
-                        <span className="border border-white/20 px-4 py-1 rounded-full text-xs text-white">{project.sub}</span>
-                        <span className="border border-white/20 px-4 py-1 rounded-full text-xs text-white">2024</span>
-                    </div>
-                    
-                    <div className="w-full h-[60vh] bg-[#1a1a1a] rounded-3xl overflow-hidden mb-16 shadow-2xl relative border border-white/10 group">
-                        <img src={project.img} alt={project.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
-                    </div>
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-100 absolute w-full h-screen">
+            <div class="px-4 pt-8 pb-4 space-y-4 flex flex-col text-2xl font-semibold">
+                <a href="#lelaki" class="block text-gray-800 hover:text-aura-blue" onclick="toggleMenu()">Lelaki</a>
+                <a href="#wanita" class="block text-gray-800 hover:text-aura-blue" onclick="toggleMenu()">Wanita</a>
+                <a href="#koleksi" class="block text-gray-800 hover:text-aura-blue" onclick="toggleMenu()">Koleksi</a>
+                <a href="#teknologi" class="block text-gray-800 hover:text-aura-blue" onclick="toggleMenu()">Teknologi</a>
+            </div>
+        </div>
+    </nav>
 
-                    <div className="grid md:grid-cols-12 gap-12">
-                        <div className="md:col-span-8 space-y-12">
-                            <div>
-                                <h3 className="text-2xl font-bold mb-6 text-white">The Challenge</h3>
-                                <p className="text-gray-300 leading-relaxed text-lg font-light">
-                                    {project.desc} This required navigating complex corporate structures while injecting a fresh, human-centric visual language. The goal was to modernize the brand perception without alienating existing stakeholders in Shah Alam.
-                                </p>
-                            </div>
-                            <div>
-                                <h3 className="text-2xl font-bold mb-6 text-white">The Solution</h3>
-                                <p className="text-gray-300 leading-relaxed text-lg font-light">
-                                    A strict yet flexible design system was established. We prioritized clarity, accessibility, and visual impact. The result is a cohesive identity that bridges the gap between tradition and innovation.
-                                </p>
-                            </div>
-                        </div>
-                        <div className="md:col-span-4 space-y-6">
-                            <div className="p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm">
-                                <h4 className="font-bold mb-4 text-white text-sm uppercase tracking-widest">Scope</h4>
-                                <ul className="space-y-3 text-sm text-gray-400">
-                                    <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-brand-accent"></div> Brand Identity</li>
-                                    <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-brand-accent"></div> UI/UX Design</li>
-                                    <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-brand-accent"></div> Art Direction</li>
-                                </ul>
-                            </div>
-                        </div>
+    <!-- HERO SECTION (Full Screen) -->
+    <section class="relative h-screen flex items-center justify-center overflow-hidden bg-black text-white">
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="Untitled-1.jpg" 
+                 alt="Athlete Training" 
+                 class="w-full h-full object-cover opacity-70">
+        </div>
+        
+        <!-- Content -->
+        <div class="relative z-10 text-center px-4 fade-in-up">
+            <h2 class="text-xl md:text-2xl font-medium mb-2 text-gray-300">Siri AURA Pro</h2>
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 tracking-tight">Ringan. Pantas. Berkuasa.</h1>
+            <p class="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
+                Direka dengan teknologi Aeroflow™ untuk atlet yang inginkan lebih daripada sekadar pakaian.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <button onclick="scrollToSection('koleksi')" class="bg-white text-black px-8 py-3 rounded-full font-medium hover:bg-gray-100 transition duration-300">
+                    Beli Sekarang
+                </button>
+                <button onclick="scrollToSection('teknologi')" class="border border-white text-white px-8 py-3 rounded-full font-medium hover:bg-white/10 transition duration-300">
+                    Ketahui Lebih Lanjut
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: LELAKI (Bento Grid Layout Style) -->
+    <section id="lelaki" class="py-20 px-4 max-w-7xl mx-auto">
+        <div class="mb-10 text-center">
+            <h2 class="text-4xl font-bold mb-2">Lelaki</h2>
+            <p class="text-aura-gray">Prestasi tinggi untuk setiap langkah.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Large Card -->
+            <div class="group relative bg-white h-[600px] rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1556906781-9a412961d28c?q=80&w=2070&auto=format&fit=crop" alt="Running Shoes" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                <div class="absolute top-10 left-0 right-0 text-center z-10">
+                    <p class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-1">Kasut Larian</p>
+                    <h3 class="text-3xl font-bold text-gray-900">AURA Velocity X</h3>
+                    <div class="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <button onclick="addToCart('Velocity X')" class="bg-aura-blue text-white px-6 py-2 rounded-full text-sm">Beli RM399</button>
                     </div>
                 </div>
-            );
-        };
+            </div>
 
-        // --- SECTIONS ON HOME ---
-
-        const HeroSection = () => {
-            const [scrollY, setScrollY] = useState(0);
-
-            useEffect(() => {
-                const handleScroll = () => setScrollY(window.scrollY);
-                window.addEventListener('scroll', handleScroll);
-                return () => window.removeEventListener('scroll', handleScroll);
-            }, []);
-
-            // Parallax Calculation
-            const scale = Math.max(1, 1.3 - (scrollY * 0.0005));
-            const opacity = Math.max(0, 1 - (scrollY * 0.002));
-
-            return (
-                <section id="home" className="h-screen w-full relative flex flex-col justify-center items-center overflow-hidden">
-                    
-                    {/* PARALLAX BACKGROUND LAYER */}
-                    <div className="fixed inset-0 w-full h-full -z-10">
-                        <img 
-                            src="image_84dde6.jpg" 
-                            onError={(e) => {e.target.onerror = null; e.target.src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2000&auto=format&fit=crop"}} 
-                            alt="Red Fluid Abstract" 
-                            className="w-full h-full object-cover transition-transform duration-100 ease-out"
-                            style={{ 
-                                transform: `scale(${scale})`,
-                                filter: 'brightness(0.8) contrast(1.1)' 
-                            }}
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black"></div>
-                    </div>
-
-                    {/* HERO CONTENT */}
-                    <div 
-                        className="relative z-10 text-center px-4"
-                        style={{ opacity: opacity, transform: `translateY(${scrollY * 0.2}px)` }}
-                    >
-                        <div className="inline-block glass-card px-4 py-1.5 rounded-full text-[10px] font-bold tracking-[0.3em] uppercase text-white/80 mb-8 border border-white/20 animate-fade-in">
-                            Portfolio 2026
-                        </div>
-                        
-                        <div className="mb-8">
-                            <h1 className="liquid-text text-6xl md:text-9xl font-bold tracking-tighter leading-none cursor-default select-none animate-slide-up">
-                                COMING SOON!
-                            </h1>
-                        </div>
-
-                        <p className="text-lg md:text-xl text-gray-200 max-w-xl mx-auto leading-relaxed font-light mb-12 animate-slide-up delay-100 drop-shadow-lg">
-                            Redefining corporate identity through human-centric design. <br/>
-                            <strong className="text-white font-medium">Precision. Clarity. Impact.</strong>
-                        </p>
-
-                        <div className="animate-slide-up delay-200">
-                            <Button 
-                                onClick={() => document.getElementById('about').scrollIntoView({behavior:'smooth'})}
-                                variant="primary"
-                            >
-                                Explore Work <span className="group-hover:translate-x-1 transition-transform"><Icons.ArrowRight /></span>
-                            </Button>
-                        </div>
-                    </div>
-                    
-                    {/* Scroll Indicator */}
-                    <div 
-                        className="absolute bottom-10 left-0 right-0 flex flex-col items-center justify-center animate-pulse-slow"
-                        style={{ opacity: opacity }}
-                    >
-                         <span className="text-[10px] uppercase tracking-widest text-white/60 mb-2">Scroll to Discover</span>
-                         <Icons.ArrowDown />
-                    </div>
-                </section>
-            );
-        };
-
-        const AboutSection = () => (
-            <section id="about" className="py-32 bg-black relative z-10 border-t border-white/10">
-                 <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-20 items-center">
-                    <div>
-                        <span className="text-brand-accent font-mono text-xs mb-6 block tracking-widest">01 / CREATOR</span>
-                        <h2 className="text-5xl md:text-6xl font-bold mb-10 text-white tracking-tighter">Meet : Allif Hanafi</h2>
-                        <div className="space-y-8 text-xl text-gray-400 font-light leading-relaxed">
-                            <p><strong className="text-white font-medium">I am Allif Hanafi.</strong> My journey began in Shah Alam. From the disciplined halls of MSU to the high-stakes environment of MOF and Petronas, I learned that design carries responsibility.</p>
-                            <p>It tells stories. It represents values. Whether it's capturing a fleeting moment through photography or crafting a corporate identity, my work is honest, thoughtful, and human.</p>
-                        </div>
-                        <div className="mt-12 flex flex-wrap gap-6">
-                             <Button variant="outline" onClick={() => {}} className="gap-3">
-                                <Icons.Download /> Download CV
-                             </Button>
-                             <Button variant="outline" onClick={() => {}} className="gap-3">
-                                <Icons.LinkedIn /> LinkedIn
-                             </Button>
-                        </div>
-                    </div>
-                    <div className="h-[600px] rounded-2xl overflow-hidden relative group border border-white/10">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0" alt="Portrait" />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-                        <div className="absolute bottom-8 left-8">
-                            <p className="text-white font-bold text-lg">Creative Lead</p>
-                            <p className="text-brand-accent text-sm">Shah Alam, MY</p>
-                        </div>
-                    </div>
-                 </div>
-            </section>
-        );
-
-        const ProjectsSection = ({ onProjectClick }) => {
-            const projects = [
-                { id: 'petronas', title: "PETRONAS", sub: "Corporate Branding", desc: "Unified visual grid system for internal marketing across multiple departments.", img: "https://images.unsplash.com/photo-1567789884554-0b844b597180?auto=format&fit=crop&q=80&w=600" },
-                { id: 'mof', title: "Ministry of Finance", sub: "Digital Strategy", desc: "Transforming government financial data into digestible social campaigns.", img: "https://images.unsplash.com/photo-1555431189-0fabf2667795?auto=format&fit=crop&q=80&w=600" },
-                { id: 'geno', title: "Geno Hotel", sub: "Hospitality", desc: "End-to-end luxury visual experience, from signage to digital assets.", img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=600" },
-            ];
-
-            return (
-                <section id="projects" className="py-32 bg-[#050505] relative z-10 border-t border-white/5">
-                    <div className="max-w-7xl mx-auto px-6 mb-20 flex items-end justify-between">
-                        <div>
-                            <span className="text-gray-500 font-mono text-xs mb-4 block tracking-widest">02 / WORK</span>
-                            <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tighter">Selected <span className="text-gray-700">Works.</span></h2>
-                        </div>
-                    </div>
-                    <div>
-                        {projects.map((p, i) => (
-                            <div 
-                                key={i}
-                                onClick={() => onProjectClick(p)}
-                                className="group border-b border-white/10 py-16 transition-all hover:bg-white/5 cursor-pointer relative overflow-hidden"
-                            >
-                                <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-12 gap-8 items-center relative z-10">
-                                    <div className="md:col-span-1 text-xs text-brand-accent font-mono opacity-50 group-hover:opacity-100">
-                                        {String(i+1).padStart(2, '0')}
-                                    </div>
-                                    <div className="md:col-span-5">
-                                        <h3 className="text-4xl font-bold mb-2 text-white group-hover:translate-x-2 transition-transform duration-300">{p.title}</h3>
-                                        <span className="text-xs font-bold uppercase tracking-widest text-gray-500 group-hover:text-white transition-colors">{p.sub}</span>
-                                    </div>
-                                    <div className="md:col-span-4">
-                                        <p className="text-gray-400 text-sm leading-relaxed group-hover:text-white transition-colors line-clamp-2">{p.desc}</p>
-                                    </div>
-                                    <div className="md:col-span-2 flex justify-end items-center">
-                                        <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center group-hover:border-brand-accent group-hover:bg-brand-accent group-hover:text-white transition-all text-white">
-                                            <Icons.ArrowRight />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </section>
-            );
-        };
-
-        const ExpertiseSection = () => {
-             const expertise = [
-                { title: "Art Direction", sub: "Strategy", desc: "Guiding visual narratives for brands to ensure consistency and impact." },
-                { title: "UI/UX Design", sub: "Digital", desc: "Creating intuitive digital systems that prioritize user experience." },
-                { title: "Photography", sub: "Production", desc: "Capturing authentic corporate moments, events, and products." },
-            ];
-
-            return (
-                <section id="expertise" className="py-32 bg-black border-t border-white/5 relative z-10">
-                    <div className="max-w-7xl mx-auto px-6 mb-20">
-                         <span className="text-gray-500 font-mono text-xs mb-4 block tracking-widest">03 / CAPABILITIES</span>
-                        <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tighter">Expertise.</h2>
-                    </div>
-                    <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto px-6">
-                        {expertise.map((e, i) => (
-                            <div key={i} className="bg-white/5 border border-white/5 p-10 rounded-2xl hover:border-brand-accent/50 transition-colors group">
-                                <span className="text-xs text-gray-500 mb-8 block font-mono">0{i+1}</span>
-                                <h3 className="text-2xl font-bold mb-4 text-white">{e.title}</h3>
-                                <p className="text-gray-400 leading-relaxed text-sm">{e.desc}</p>
-                            </div>
-                        ))}
-                    </div>
-                </section>
-            );
-        };
-
-        const ContactSection = ({ onOpenModal }) => (
-            <section id="contact" className="py-32 bg-[#080808] border-t border-white/5 relative z-10 text-center">
-                <div className="max-w-4xl mx-auto px-6">
-                    <h2 className="text-5xl md:text-8xl font-bold text-white mb-8 tracking-tighter">Let's Talk.</h2>
-                    <p className="text-xl text-gray-400 mb-12 font-light">
-                        Ready to elevate your visual identity? Based in Shah Alam, available for global impact.
-                    </p>
-                    <div className="flex justify-center gap-6">
-                        <Button variant="primary" onClick={onOpenModal} className="!px-8 !py-4 !text-lg">
-                            Get in Touch
-                        </Button>
+            <!-- Stacked Cards -->
+            <div class="flex flex-col gap-6 h-[600px]">
+                <div class="group relative bg-black flex-1 rounded-3xl overflow-hidden cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?q=80&w=2787&auto=format&fit=crop" alt="Gym Wear" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute bottom-8 left-8 text-white">
+                        <h3 class="text-2xl font-bold">Baju Kompresi</h3>
+                        <p class="text-gray-300 text-sm mb-3">Sokongan otot maksimum.</p>
+                        <button onclick="addToCart('Baju Kompresi')" class="text-white hover:underline text-sm font-medium">Lihat Koleksi &rsaquo;</button>
                     </div>
                 </div>
+                <div class="group relative bg-gray-100 flex-1 rounded-3xl overflow-hidden cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?q=80&w=2070&auto=format&fit=crop" alt="Joggers" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute top-8 left-8 text-black">
+                        <h3 class="text-2xl font-bold">Seluar Trek Flex</h3>
+                        <p class="text-gray-600 text-sm mb-3">Gaya & Keselesaan.</p>
+                        <button onclick="addToCart('Seluar Trek')" class="text-aura-blue hover:underline text-sm font-medium">Lihat Koleksi &rsaquo;</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: TEKNOLOGI (Full Width Visual) -->
+    <section id="teknologi" class="py-10 bg-black text-white">
+        <div class="max-w-7xl mx-auto px-4 py-20 text-center">
+            <span class="text-aura-blue font-bold tracking-widest uppercase text-sm">Inovasi</span>
+            <h2 class="text-4xl md:text-6xl font-bold mt-4 mb-6">Fabrik Aeroflow™</h2>
+            <p class="text-xl text-gray-400 max-w-3xl mx-auto mb-12">
+                Sistem pengudaraan mikro yang memastikan badan anda kekal kering walaupun dalam intensiti tertinggi. 
+                Diuji oleh atlet profesional dunia.
+            </p>
+            <div class="relative w-full h-[500px] rounded-3xl overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1517963879433-6ad2b056d712?q=80&w=2070&auto=format&fit=crop" alt="Fabric Texture" class="w-full h-full object-cover opacity-60 hover:opacity-80 transition-opacity duration-500">
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <button class="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/40 transition-all">
+                        <i class="ph-fill ph-play text-white text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: WANITA (Carousel Style) -->
+    <section id="wanita" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-end mb-8">
+                <div>
+                    <h2 class="text-4xl font-bold text-gray-900">Wanita</h2>
+                    <p class="text-gray-500 mt-2">Koleksi musim luruh kini tiba.</p>
+                </div>
+                <div class="flex gap-2">
+                    <button class="p-2 rounded-full bg-gray-100 hover:bg-gray-200" onclick="scrollGallery('left')"><i class="ph ph-caret-left"></i></button>
+                    <button class="p-2 rounded-full bg-gray-100 hover:bg-gray-200" onclick="scrollGallery('right')"><i class="ph ph-caret-right"></i></button>
+                </div>
+            </div>
+
+            <!-- Horizontal Scroll Container -->
+            <div id="gallery-scroll" class="flex overflow-x-auto gap-6 pb-8 no-scrollbar snap-x snap-mandatory">
                 
-                <div className="mt-32 border-t border-white/10 pt-12 max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-600">
-                    <p>&copy; 2026 Allif Hanafi. Crafted in Shah Alam.</p>
-                    <div className="flex gap-6 mt-4 md:mt-0">
-                        <a href="#" className="hover:text-white transition-colors">LinkedIn</a>
-                        <a href="#" className="hover:text-white transition-colors">Instagram</a>
+                <!-- Card 1 -->
+                <div class="min-w-[300px] md:min-w-[400px] snap-center">
+                    <div class="group relative rounded-2xl overflow-hidden h-[500px] bg-gray-50">
+                        <img src="https://images.unsplash.com/photo-1518310383802-640c2de311b2?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute bottom-0 w-full p-6 bg-gradient-to-t from-black/60 to-transparent text-white">
+                            <h3 class="text-xl font-bold">Yoga Essentials</h3>
+                            <button onclick="addToCart('Yoga Set')" class="mt-2 text-sm underline opacity-0 group-hover:opacity-100 transition-opacity">Tambah ke Beg</button>
+                        </div>
                     </div>
                 </div>
-            </section>
-        );
 
-        // --- MAIN APP ---
-
-        const App = () => {
-            const [darkMode, setDarkMode] = useState(true);
-            const [contactOpen, setContactOpen] = useState(false);
-            const [currentProject, setCurrentProject] = useState(null);
-
-            useEffect(() => {
-                const root = document.documentElement;
-                if (darkMode) {
-                    root.classList.add('dark');
-                    root.classList.remove('light');
-                } else {
-                    root.classList.add('light');
-                    root.classList.remove('dark');
-                }
-            }, [darkMode]);
-
-            return (
-                <div className="min-h-screen bg-black text-white selection:bg-brand-accent selection:text-white relative">
-                    
-                    <NavBar 
-                        darkMode={darkMode} 
-                        toggleTheme={() => setDarkMode(!darkMode)}
-                        onContact={() => setContactOpen(true)}
-                        navigateHome={() => setCurrentProject(null)}
-                    />
-                    
-                    <main>
-                        {currentProject ? (
-                            <ProjectDetailView 
-                                project={currentProject} 
-                                onBack={() => setCurrentProject(null)} 
-                            />
-                        ) : (
-                            <>
-                                <HeroSection />
-                                <AboutSection />
-                                <ProjectsSection onProjectClick={setCurrentProject} />
-                                <ExpertiseSection />
-                                <ContactSection onOpenModal={() => setContactOpen(true)} />
-                            </>
-                        )}
-                    </main>
-
-                    <ContactModal isOpen={contactOpen} onClose={() => setContactOpen(false)} />
+                <!-- Card 2 -->
+                <div class="min-w-[300px] md:min-w-[400px] snap-center">
+                    <div class="group relative rounded-2xl overflow-hidden h-[500px] bg-gray-50">
+                        <img src="https://images.unsplash.com/photo-1483721310020-03333e577078?q=80&w=2128&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute bottom-0 w-full p-6 bg-gradient-to-t from-black/60 to-transparent text-white">
+                            <h3 class="text-xl font-bold">Run Free Top</h3>
+                            <button onclick="addToCart('Running Top')" class="mt-2 text-sm underline opacity-0 group-hover:opacity-100 transition-opacity">Tambah ke Beg</button>
+                        </div>
+                    </div>
                 </div>
-            );
-        };
 
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<App />);
-        console.log("Portfolio System Online.");
+                <!-- Card 3 -->
+                <div class="min-w-[300px] md:min-w-[400px] snap-center">
+                    <div class="group relative rounded-2xl overflow-hidden h-[500px] bg-gray-50">
+                        <img src="https://images.unsplash.com/photo-1571731956672-f2b94d7dd0cb?q=80&w=2788&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute bottom-0 w-full p-6 bg-gradient-to-t from-black/60 to-transparent text-white">
+                            <h3 class="text-xl font-bold">Weights Series</h3>
+                            <button onclick="addToCart('Gym Gloves')" class="mt-2 text-sm underline opacity-0 group-hover:opacity-100 transition-opacity">Tambah ke Beg</button>
+                        </div>
+                    </div>
+                </div>
+                 <!-- Card 4 -->
+                 <div class="min-w-[300px] md:min-w-[400px] snap-center">
+                    <div class="group relative rounded-2xl overflow-hidden h-[500px] bg-gray-50">
+                        <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=2069&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute bottom-0 w-full p-6 bg-gradient-to-t from-black/60 to-transparent text-white">
+                            <h3 class="text-xl font-bold">Cardio Cool</h3>
+                            <button onclick="addToCart('Cardio Set')" class="mt-2 text-sm underline opacity-0 group-hover:opacity-100 transition-opacity">Tambah ke Beg</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: KOLEKSI AKSESORI (Grid Kecil) -->
+    <section id="aksesori" class="py-20 bg-aura-light border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-10">Aksesori Penting</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <!-- Item 1 -->
+                <div class="bg-white p-6 rounded-2xl hover:shadow-lg transition-shadow duration-300 text-center cursor-pointer group">
+                    <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?q=80&w=2070&auto=format&fit=crop" class="w-full h-40 object-contain mb-4 group-hover:scale-110 transition-transform">
+                    <h4 class="font-semibold text-gray-900">Botol Hidrasi</h4>
+                    <p class="text-xs text-gray-500 mt-1">Stok Baharu</p>
+                    <span class="block mt-2 text-aura-blue text-sm">RM 89</span>
+                </div>
+                 <!-- Item 2 -->
+                 <div class="bg-white p-6 rounded-2xl hover:shadow-lg transition-shadow duration-300 text-center cursor-pointer group">
+                    <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?q=80&w=2070&auto=format&fit=crop" class="w-full h-40 object-contain mb-4 group-hover:scale-110 transition-transform">
+                    <h4 class="font-semibold text-gray-900">Beg Sukan</h4>
+                    <p class="text-xs text-gray-500 mt-1">Kalis Air</p>
+                    <span class="block mt-2 text-aura-blue text-sm">RM 159</span>
+                </div>
+                 <!-- Item 3 -->
+                 <div class="bg-white p-6 rounded-2xl hover:shadow-lg transition-shadow duration-300 text-center cursor-pointer group">
+                    <img src="https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?q=80&w=2071&auto=format&fit=crop" class="w-full h-40 object-contain mb-4 group-hover:scale-110 transition-transform">
+                    <h4 class="font-semibold text-gray-900">Topi Larian</h4>
+                    <p class="text-xs text-gray-500 mt-1">Ringan</p>
+                    <span class="block mt-2 text-aura-blue text-sm">RM 69</span>
+                </div>
+                 <!-- Item 4 -->
+                 <div class="bg-white p-6 rounded-2xl hover:shadow-lg transition-shadow duration-300 text-center cursor-pointer group">
+                    <img src="https://images.unsplash.com/photo-1511556532299-8f662fc26c06?q=80&w=2070&auto=format&fit=crop" class="w-full h-40 object-contain mb-4 group-hover:scale-110 transition-transform">
+                    <h4 class="font-semibold text-gray-900">Smart Band</h4>
+                    <p class="text-xs text-gray-500 mt-1">Penjejak Nadi</p>
+                    <span class="block mt-2 text-aura-blue text-sm">RM 299</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-aura-light pt-16 pb-8 text-xs text-gray-500 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8 border-b border-gray-300 pb-8">
+                <div>
+                    <h3 class="font-semibold text-gray-900 mb-3">Mengenai AURA</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:underline">Berita</a></li>
+                        <li><a href="#" class="hover:underline">Kerjaya</a></li>
+                        <li><a href="#" class="hover:underline">Pelabur</a></li>
+                        <li><a href="#" class="hover:underline">Kelestarian</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-gray-900 mb-3">Bantuan</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:underline">Status Pesanan</a></li>
+                        <li><a href="#" class="hover:underline">Penghantaran</a></li>
+                        <li><a href="#" class="hover:underline">Pemulangan</a></li>
+                        <li><a href="#" class="hover:underline">Hubungi Kami</a></li>
+                    </ul>
+                </div>
+                <div class="col-span-2 md:col-span-2">
+                    <h3 class="font-semibold text-gray-900 mb-3">Langgan Berita</h3>
+                    <p class="mb-4">Dapatkan info terkini mengenai produk dan tawaran eksklusif.</p>
+                    <div class="flex gap-2">
+                        <input type="email" placeholder="Emel anda" class="p-2 border rounded-md w-full md:w-64 bg-white">
+                        <button class="bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800">Hantar</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p>Copyright © 2024 AURA Athletics Malaysia. Hak Cipta Terpelihara.</p>
+                <div class="flex space-x-4 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-black">Dasar Privasi</a>
+                    <span class="border-l border-gray-300 h-3 self-center"></span>
+                    <a href="#" class="hover:text-black">Terma Penggunaan</a>
+                    <span class="border-l border-gray-300 h-3 self-center"></span>
+                    <a href="#" class="hover:text-black">Peta Laman</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- TOAST NOTIFICATION (Hidden by default) -->
+    <div id="toast" class="fixed bottom-5 left-1/2 transform -translate-x-1/2 bg-black/90 backdrop-blur text-white px-6 py-3 rounded-full shadow-2xl flex items-center gap-3 transition-all duration-500 translate-y-20 opacity-0 z-50">
+        <i class="ph-fill ph-check-circle text-green-500 text-xl"></i>
+        <span id="toast-message">Item ditambah ke beg</span>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // 1. Mobile Menu Toggle
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.querySelector('.ph-list');
+            
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            } else {
+                menu.classList.add('hidden');
+                document.body.style.overflow = 'auto'; // Enable scrolling
+            }
+        }
+
+        // 2. Smooth Scroll to Sections
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if(element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // 3. Scroll Gallery Logic (Horizontal Scroll)
+        function scrollGallery(direction) {
+            const container = document.getElementById('gallery-scroll');
+            const scrollAmount = 400; // Width of one card roughly
+            
+            if (direction === 'left') {
+                container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            } else {
+                container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            }
+        }
+
+        // 4. Cart Logic (Simulation)
+        let cartTotal = 0;
+        
+        function addToCart(productName) {
+            // Update counter
+            cartTotal++;
+            const countBadge = document.getElementById('cart-count');
+            countBadge.innerText = cartTotal;
+            countBadge.classList.remove('hidden');
+            
+            // Show toast
+            const toast = document.getElementById('toast');
+            const msg = document.getElementById('toast-message');
+            
+            msg.innerText = `${productName} ditambah ke beg`;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            
+            // Hide toast after 3 seconds
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        function openCart() {
+            if(cartTotal === 0) {
+                alert("Beg anda kosong. Sila pilih produk hebat kami!");
+            } else {
+                alert(`Anda ada ${cartTotal} item dalam beg. Teruskan ke pembayaran?`);
+            }
+        }
+
+        // 5. Navbar Transition on Scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-sm');
+            } else {
+                nav.classList.remove('shadow-sm');
+            }
+        });
     </script>
 </body>
 </html>
