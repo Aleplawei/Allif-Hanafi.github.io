@@ -1,229 +1,334 @@
-<!DOCTYPE HTML>
-<!--
-	Massively by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Massively by HTML5 UP</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+import React, { useState, useEffect, useRef } from 'react';
+import { ChevronRight, Globe, Menu, X, ArrowRight, Camera, PenTool, Layout, Mail, Linkedin, Instagram } from 'lucide-react';
 
-		<!-- Wrapper -->
-			<div id="wrapper" class="fade-in">
+// --- SEO & Accessibility Helper: Semantic Wrapper ---
+// Dalam production sebenar, meta tags duduk dalam <head>, tapi struktur semantic body ini kritikal untuk Google Crawlers.
 
-				<!-- Intro -->
-					<div id="intro">
-						<h1>This is<br />
-						Massively</h1>
-						<p>A free, fully responsive HTML5 + CSS3 site template designed by <a href="https://twitter.com/ajlkn">@ajlkn</a> for <a href="https://html5up.net">HTML5 UP</a><br />
-						and released for free under the <a href="https://html5up.net/license">Creative Commons license</a>.</p>
-						<ul class="actions">
-							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
-						</ul>
-					</div>
+const Section = ({ children, className = "", id = "" }) => (
+  <section id={id} className={`py-24 md:py-32 px-6 max-w-[1440px] mx-auto ${className}`}>
+    {children}
+  </section>
+);
 
-				<!-- Header -->
-					<header id="header">
-						<a href="index.html" class="logo">Massively</a>
-					</header>
+// --- Component: Global Navigation (Glassmorphism) ---
+const NavBar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-				<!-- Nav -->
-					<nav id="nav">
-						<ul class="links">
-							<li class="active"><a href="index.html">This is Massively</a></li>
-							<li><a href="generic.html">Generic Page</a></li>
-							<li><a href="elements.html">Elements Reference</a></li>
-						</ul>
-						<ul class="icons">
-							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-							<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-							<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-						</ul>
-					</nav>
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-				<!-- Main -->
-					<div id="main">
+  const navLinks = [
+    { name: 'Store', href: '#' }, // Creative liberty: Maybe "Services"
+    { name: 'Mac', href: '#' },   // "Design"
+    { name: 'iPad', href: '#' },  // "Photography"
+    { name: 'iPhone', href: '#' },// "About"
+    { name: 'Watch', href: '#' }, // "Contact"
+  ];
+  
+  // Custom links for Portfolio context
+  const portfolioLinks = [
+    { name: 'Work', href: '#work' },
+    { name: 'Services', href: '#services' },
+    { name: 'About', href: '#about' },
+    { name: 'Contact', href: '#footer' },
+  ];
 
-						<!-- Featured Post -->
-							<article class="post featured">
-								<header class="major">
-									<span class="date">April 25, 2017</span>
-									<h2><a href="#">And this is a<br />
-									massive headline</a></h2>
-									<p>Aenean ornare velit lacus varius enim ullamcorper proin aliquam<br />
-									facilisis ante sed etiam magna interdum congue. Lorem ipsum dolor<br />
-									amet nullam sed etiam veroeros.</p>
-								</header>
-								<a href="#" class="image main"><img src="images/pic01.jpg" alt="" /></a>
-								<ul class="actions special">
-									<li><a href="#" class="button large">Full Story</a></li>
-								</ul>
-							</article>
+  return (
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/80 backdrop-blur-md border-b border-gray-200' : 'bg-transparent'}`}>
+      <div className="max-w-[1024px] mx-auto px-6 h-12 flex justify-between items-center text-xs font-medium tracking-tight">
+        <a href="#" className="text-xl font-bold tracking-tighter hover:opacity-70 transition-opacity">
+           <span className="sr-only">Home</span> {/* Semantic Label for SEO */}
+        </a>
+        
+        {/* Desktop Menu */}
+        <ul className="hidden md:flex space-x-8 text-gray-800">
+          {portfolioLinks.map((link) => (
+            <li key={link.name}>
+              <a href={link.href} className="hover:text-blue-600 transition-colors opacity-80 hover:opacity-100">
+                {link.name}
+              </a>
+            </li>
+          ))}
+        </ul>
 
-						<!-- Posts -->
-							<section class="posts">
-								<article>
-									<header>
-										<span class="date">April 24, 2017</span>
-										<h2><a href="#">Sed magna<br />
-										ipsum faucibus</a></h2>
-									</header>
-									<a href="#" class="image fit"><img src="images/pic02.jpg" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<span class="date">April 22, 2017</span>
-										<h2><a href="#">Primis eget<br />
-										imperdiet lorem</a></h2>
-									</header>
-									<a href="#" class="image fit"><img src="images/pic03.jpg" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<span class="date">April 18, 2017</span>
-										<h2><a href="#">Ante mattis<br />
-										interdum dolor</a></h2>
-									</header>
-									<a href="#" class="image fit"><img src="images/pic04.jpg" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<span class="date">April 14, 2017</span>
-										<h2><a href="#">Tempus sed<br />
-										nulla imperdiet</a></h2>
-									</header>
-									<a href="#" class="image fit"><img src="images/pic05.jpg" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<span class="date">April 11, 2017</span>
-										<h2><a href="#">Odio magna<br />
-										sed consectetur</a></h2>
-									</header>
-									<a href="#" class="image fit"><img src="images/pic06.jpg" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<span class="date">April 7, 2017</span>
-										<h2><a href="#">Augue lorem<br />
-										primis vestibulum</a></h2>
-									</header>
-									<a href="#" class="image fit"><img src="images/pic07.jpg" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
-									</ul>
-								</article>
-							</section>
+        {/* Mobile Menu Toggle */}
+        <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
+          {isOpen ? <X size={18} /> : <Menu size={18} />}
+        </button>
+      </div>
 
-						<!-- Footer -->
-							<footer>
-								<div class="pagination">
-									<!--<a href="#" class="previous">Prev</a>-->
-									<a href="#" class="page active">1</a>
-									<a href="#" class="page">2</a>
-									<a href="#" class="page">3</a>
-									<span class="extra">&hellip;</span>
-									<a href="#" class="page">8</a>
-									<a href="#" class="page">9</a>
-									<a href="#" class="page">10</a>
-									<a href="#" class="next">Next</a>
-								</div>
-							</footer>
+      {/* Mobile Menu Dropdown */}
+      {isOpen && (
+        <div className="absolute top-12 left-0 w-full bg-white h-screen p-8 md:hidden fade-in-up">
+          <ul className="flex flex-col space-y-6 text-2xl font-semibold text-gray-900">
+            {portfolioLinks.map((link) => (
+              <li key={link.name} onClick={() => setIsOpen(false)}>
+                <a href={link.href}>{link.name}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </nav>
+  );
+};
 
-					</div>
+// --- Component: Hero Section (Big Typography) ---
+const Hero = () => {
+  return (
+    <div className="relative h-screen flex flex-col items-center justify-center text-center px-4 pt-20 overflow-hidden bg-[#fbfbfd]">
+      <div className="fade-in-up max-w-4xl mx-auto z-10">
+        <h2 className="text-xl md:text-2xl font-semibold text-orange-600 mb-2 tracking-wide">New</h2>
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-[#1d1d1f] tracking-tight leading-[1.05] mb-6">
+          Creative Designer.<br />
+          <span className="text-gray-400">Pro. Beyond.</span>
+        </h1>
+        <p className="text-lg md:text-2xl text-gray-500 max-w-2xl mx-auto leading-relaxed font-medium mb-8">
+          Human-centered design. Crafted in Shah Alam.
+          <br className="hidden md:block" /> Engineered for impact.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <button className="bg-[#0071e3] hover:bg-[#0077ed] text-white px-6 py-2 rounded-full font-medium text-base transition-all transform hover:scale-105">
+            View Projects
+          </button>
+          <a href="#about" className="text-[#0071e3] hover:underline flex items-center gap-1 font-medium text-base group">
+            Learn more about me <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
+          </a>
+        </div>
+      </div>
+      
+      {/* Abstract Background Element (CSS-only replacement for heavy images) */}
+      <div className="absolute bottom-[-10%] w-[120%] h-[50%] bg-gradient-to-t from-gray-200 to-transparent blur-3xl opacity-50 rounded-[100%] pointer-events-none"></div>
+    </div>
+  );
+};
 
-				<!-- Footer -->
-					<footer id="footer">
-						<section>
-							<form method="post" action="#">
-								<div class="fields">
-									<div class="field">
-										<label for="name">Name</label>
-										<input type="text" name="name" id="name" />
-									</div>
-									<div class="field">
-										<label for="email">Email</label>
-										<input type="text" name="email" id="email" />
-									</div>
-									<div class="field">
-										<label for="message">Message</label>
-										<textarea name="message" id="message" rows="3"></textarea>
-									</div>
-								</div>
-								<ul class="actions">
-									<li><input type="submit" value="Send Message" /></li>
-								</ul>
-							</form>
-						</section>
-						<section class="split contact">
-							<section class="alt">
-								<h3>Address</h3>
-								<p>1234 Somewhere Road #87257<br />
-								Nashville, TN 00000-0000</p>
-							</section>
-							<section>
-								<h3>Phone</h3>
-								<p><a href="#">(000) 000-0000</a></p>
-							</section>
-							<section>
-								<h3>Email</h3>
-								<p><a href="#">info@untitled.tld</a></p>
-							</section>
-							<section>
-								<h3>Social</h3>
-								<ul class="icons alt">
-									<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
-									<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
-									<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
-									<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-								</ul>
-							</section>
-						</section>
-					</footer>
+// --- Component: Bento Grid Project Card ---
+const ProjectCard = ({ title, subtitle, description, type, dark = false, image, link }) => (
+  <article className={`relative group overflow-hidden rounded-[30px] p-8 md:p-12 transition-transform duration-500 hover:scale-[1.01] ${dark ? 'bg-black text-white' : 'bg-white text-black shadow-lg border border-gray-100'}`}>
+    <div className="relative z-10 flex flex-col h-full items-center text-center md:items-start md:text-left">
+      <span className="text-xs font-bold uppercase tracking-widest opacity-60 mb-2">{type}</span>
+      <h3 className="text-3xl md:text-4xl font-bold mb-2 tracking-tight">{title}</h3>
+      <p className={`text-lg md:text-xl font-medium mb-6 ${dark ? 'text-gray-300' : 'text-gray-500'}`}>{subtitle}</p>
+      <div className="mt-auto">
+        <button className={`inline-flex items-center gap-1 font-medium ${dark ? 'text-blue-400' : 'text-[#0071e3]'} hover:underline`}>
+          See case study <ChevronRight size={16} />
+        </button>
+      </div>
+    </div>
+    {/* Background Image Logic */}
+    <div className="absolute inset-0 z-0 opacity-20 group-hover:opacity-30 transition-opacity">
+       <img src={image} alt={title} className="w-full h-full object-cover" />
+    </div>
+  </article>
+);
 
-				<!-- Copyright -->
-					<div id="copyright">
-						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
-					</div>
+// --- Component: Tech Specs (Skills) ---
+const SpecItem = ({ icon: Icon, title, desc }) => (
+  <div className="flex flex-col items-center text-center p-6 fade-in-up">
+    <div className="mb-4 text-gray-900">
+      <Icon size={48} strokeWidth={1} />
+    </div>
+    <h4 className="text-lg font-semibold text-gray-900 mb-2">{title}</h4>
+    <p className="text-sm text-gray-500 leading-relaxed max-w-xs">{desc}</p>
+  </div>
+);
 
-			</div>
+// --- Main App Component ---
+export default function ApplePortfolio() {
+  
+  // Intersection Observer for fade-in animations
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+    document.querySelectorAll('.fade-in-up').forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
 
-	</body>
-</html>
+  return (
+    <div className="font-sans antialiased text-[#1d1d1f] bg-[#f5f5f7] selection:bg-[#0071e3] selection:text-white">
+      <style jsx global>{`
+        .fade-in-up {
+          opacity: 0;
+          transform: translateY(30px);
+          transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-up.visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #c1c1c1; border-radius: 5px; }
+        ::-webkit-scrollbar-thumb:hover { background: #a8a8a8; }
+      `}</style>
+
+      <NavBar />
+      <Hero />
+
+      {/* --- WORK SECTION (The Bento Grid) --- */}
+      <section id="work" className="py-24 px-4 md:px-6 max-w-[1400px] mx-auto">
+        <div className="text-center mb-16 fade-in-up">
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-4">Portfoli<span className="text-gray-400">OS</span>.</h2>
+          <p className="text-xl text-gray-500">The power of design. In your hands.</p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4">
+          {/* Featured Large Card */}
+          <div className="md:col-span-2 aspect-[16/9] md:aspect-[21/9]">
+            <ProjectCard 
+              type="Corporate Identity"
+              title="PETRONAS"
+              subtitle="Fueling the visual narrative of a nation."
+              description="Internal marketing materials and branding consistency for Malaysia's oil & gas giant."
+              image="https://images.unsplash.com/photo-1567789884554-0b844b597180?auto=format&fit=crop&q=80&w=2000"
+              dark={true}
+            />
+          </div>
+
+          {/* Secondary Cards */}
+          <div className="aspect-square md:aspect-[4/3]">
+             <ProjectCard 
+              type="Government Sector"
+              title="Ministry of Finance"
+              subtitle="Digital campaigns & Live Productions."
+              image="https://images.unsplash.com/photo-1555431189-0fabf2667795?auto=format&fit=crop&q=80&w=1000"
+            />
+          </div>
+          <div className="aspect-square md:aspect-[4/3]">
+             <ProjectCard 
+              type="Hospitality"
+              title="Geno Hotel"
+              subtitle="End-to-end luxury visual experience."
+              image="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=1000"
+              dark={true}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* --- PHILOSOPHY SECTION (Apple Values Style) --- */}
+      <section id="about" className="bg-white py-32 overflow-hidden">
+        <div className="max-w-[980px] mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="fade-in-up order-2 md:order-1">
+               <h2 className="text-4xl font-bold mb-6 tracking-tight">Design.<br/> It's not just how it looks.</h2>
+               <p className="text-gray-500 text-lg leading-relaxed mb-6">
+                 My journey began in Shah Alam. From the disciplined halls of MSU to the high-stakes environment of MOF and Petronas, I learned that design carries responsibility.
+               </p>
+               <p className="text-gray-500 text-lg leading-relaxed">
+                 It tells stories. It represents values. Whether it's capturing a fleeting moment through photography or crafting a corporate identity, my work is honest, thoughtful, and human.
+               </p>
+            </div>
+            <div className="fade-in-up order-1 md:order-2 flex justify-center">
+               <div className="w-64 h-64 md:w-80 md:h-80 bg-gray-100 rounded-full flex items-center justify-center relative overflow-hidden shadow-inner">
+                  {/* Abstract Avatar Placeholder */}
+                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=600" alt="Profile" className="w-full h-full object-cover opacity-90 hover:scale-110 transition-transform duration-700" />
+               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- SPECS GRID (Services) --- */}
+      <section id="services" className="py-24 bg-[#f5f5f7]">
+        <div className="max-w-[1200px] mx-auto px-6">
+           <h3 className="text-3xl font-bold text-center mb-16 tracking-tight">Which creative solution is right for you?</h3>
+           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 divide-y md:divide-y-0 md:divide-x divide-gray-200">
+              <SpecItem 
+                icon={Layout} 
+                title="Graphic Design" 
+                desc="Branding, UI/UX, and Print. Pixel-perfect precision for corporate and creative needs." 
+              />
+              <SpecItem 
+                icon={Camera} 
+                title="Photography" 
+                desc="Event, Wedding, Product. Capturing real emotions and authentic moments." 
+              />
+              <SpecItem 
+                icon={Globe} 
+                title="Digital Strategy" 
+                desc="Social media content and live-stream production experience with top government agencies." 
+              />
+           </div>
+        </div>
+      </section>
+
+      {/* --- FOOTER (Apple Sitemap Style) --- */}
+      <footer id="footer" className="bg-[#f5f5f7] text-xs text-gray-500 py-12 border-t border-gray-200">
+        <div className="max-w-[980px] mx-auto px-6">
+          
+          <div className="mb-8 pb-8 border-b border-gray-200">
+            <p className="mb-2">1. Design services are subject to availability and project scope assessment.</p>
+            <p>2. Photography bookings require advanced notice.</p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+            <div>
+              <h4 className="font-semibold text-gray-900 mb-2">Shop & Learn</h4>
+              <ul className="space-y-2">
+                <li><a href="#" className="hover:underline">Store</a></li>
+                <li><a href="#" className="hover:underline">Mac</a></li>
+                <li><a href="#" className="hover:underline">iPad</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold text-gray-900 mb-2">Services</h4>
+              <ul className="space-y-2">
+                <li><a href="#" className="hover:underline">Branding</a></li>
+                <li><a href="#" className="hover:underline">Photography</a></li>
+                <li><a href="#" className="hover:underline">Social Media</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold text-gray-900 mb-2">Account</h4>
+              <ul className="space-y-2">
+                <li><a href="#" className="hover:underline">Manage Your ID</a></li>
+                <li><a href="#" className="hover:underline">Store Account</a></li>
+                <li><a href="#" className="hover:underline">iCloud.com</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold text-gray-900 mb-2">About Me</h4>
+              <ul className="space-y-2">
+                <li><a href="#" className="hover:underline">Newsroom</a></li>
+                <li><a href="#" className="hover:underline">Career</a></li>
+                <li><a href="#" className="hover:underline">Investors</a></li>
+                <li><a href="#" className="hover:underline">Ethics & Compliance</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-gray-200">
+            <div className="mb-4 md:mb-0">
+              <p>Copyright © 2024 Untitled Design. All rights reserved.</p>
+            </div>
+            <div className="flex space-x-6">
+              <a href="#" className="hover:text-gray-900 transition-colors">Privacy Policy</a>
+              <a href="#" className="hover:text-gray-900 transition-colors">Terms of Use</a>
+              <a href="#" className="hover:text-gray-900 transition-colors">Sales and Refunds</a>
+              <a href="#" className="hover:text-gray-900 transition-colors">Legal</a>
+              <a href="#" className="hover:text-gray-900 transition-colors">Site Map</a>
+            </div>
+          </div>
+          <div className="mt-4 text-center md:text-left">
+            <span className="inline-flex items-center gap-1">
+              Malaysia <Globe size={12} />
+            </span>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
