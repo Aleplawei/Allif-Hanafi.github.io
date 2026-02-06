@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { ChevronRight, Globe, Menu, X, ArrowRight, Camera, PenTool, Layout, Mail, Linkedin, Instagram } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { ChevronRight, Globe, Menu, X, Camera, Layout } from 'lucide-react';
 
 // --- SEO & Accessibility Helper: Semantic Wrapper ---
-// Dalam production sebenar, meta tags duduk dalam <head>, tapi struktur semantic body ini kritikal untuk Google Crawlers.
-
+// Struktur ini penting untuk memastikan 'crawlers' Google faham hierarki laman web anda.
 const Section = ({ children, className = "", id = "" }) => (
   <section id={id} className={`py-24 md:py-32 px-6 max-w-[1440px] mx-auto ${className}`}>
     {children}
@@ -21,15 +20,8 @@ const NavBar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks = [
-    { name: 'Store', href: '#' }, // Creative liberty: Maybe "Services"
-    { name: 'Mac', href: '#' },   // "Design"
-    { name: 'iPad', href: '#' },  // "Photography"
-    { name: 'iPhone', href: '#' },// "About"
-    { name: 'Watch', href: '#' }, // "Contact"
-  ];
-  
-  // Custom links for Portfolio context
+  // Menu navigasi 'dummy' untuk mengekalkan estetik Apple, 
+  // tetapi link portfolio sebenar ditambah di bawah.
   const portfolioLinks = [
     { name: 'Work', href: '#work' },
     { name: 'Services', href: '#services' },
@@ -41,7 +33,7 @@ const NavBar = () => {
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/80 backdrop-blur-md border-b border-gray-200' : 'bg-transparent'}`}>
       <div className="max-w-[1024px] mx-auto px-6 h-12 flex justify-between items-center text-xs font-medium tracking-tight">
         <a href="#" className="text-xl font-bold tracking-tighter hover:opacity-70 transition-opacity">
-           <span className="sr-only">Home</span> {/* Semantic Label for SEO */}
+           <span className="sr-only">Home</span> {/* Label Semantic untuk SEO */}
         </a>
         
         {/* Desktop Menu */}
@@ -56,7 +48,7 @@ const NavBar = () => {
         </ul>
 
         {/* Mobile Menu Toggle */}
-        <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
+        <button className="md:hidden" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle Menu">
           {isOpen ? <X size={18} /> : <Menu size={18} />}
         </button>
       </div>
@@ -92,9 +84,9 @@ const Hero = () => {
           <br className="hidden md:block" /> Engineered for impact.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <button className="bg-[#0071e3] hover:bg-[#0077ed] text-white px-6 py-2 rounded-full font-medium text-base transition-all transform hover:scale-105">
+          <a href="#work" className="bg-[#0071e3] hover:bg-[#0077ed] text-white px-6 py-2 rounded-full font-medium text-base transition-all transform hover:scale-105">
             View Projects
-          </button>
+          </a>
           <a href="#about" className="text-[#0071e3] hover:underline flex items-center gap-1 font-medium text-base group">
             Learn more about me <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
           </a>
@@ -108,7 +100,7 @@ const Hero = () => {
 };
 
 // --- Component: Bento Grid Project Card ---
-const ProjectCard = ({ title, subtitle, description, type, dark = false, image, link }) => (
+const ProjectCard = ({ title, subtitle, type, dark = false, image }) => (
   <article className={`relative group overflow-hidden rounded-[30px] p-8 md:p-12 transition-transform duration-500 hover:scale-[1.01] ${dark ? 'bg-black text-white' : 'bg-white text-black shadow-lg border border-gray-100'}`}>
     <div className="relative z-10 flex flex-col h-full items-center text-center md:items-start md:text-left">
       <span className="text-xs font-bold uppercase tracking-widest opacity-60 mb-2">{type}</span>
@@ -141,7 +133,7 @@ const SpecItem = ({ icon: Icon, title, desc }) => (
 // --- Main App Component ---
 export default function ApplePortfolio() {
   
-  // Intersection Observer for fade-in animations
+  // Intersection Observer untuk animasi 'fade-in'
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -157,7 +149,9 @@ export default function ApplePortfolio() {
 
   return (
     <div className="font-sans antialiased text-[#1d1d1f] bg-[#f5f5f7] selection:bg-[#0071e3] selection:text-white">
-      <style jsx global>{`
+      {/* Global CSS Styles untuk animasi & scrollbar */}
+      {/* UPDATED: Removing 'jsx' and 'global' attributes to fix React console warning */}
+      <style>{`
         .fade-in-up {
           opacity: 0;
           transform: translateY(30px);
@@ -167,18 +161,19 @@ export default function ApplePortfolio() {
           opacity: 1;
           transform: translateY(0);
         }
-        /* Custom Scrollbar */
+        /* Custom Scrollbar ala Apple */
         ::-webkit-scrollbar { width: 10px; }
         ::-webkit-scrollbar-track { background: #f1f1f1; }
         ::-webkit-scrollbar-thumb { background: #c1c1c1; border-radius: 5px; }
         ::-webkit-scrollbar-thumb:hover { background: #a8a8a8; }
+        html { scroll-behavior: smooth; }
       `}</style>
 
       <NavBar />
       <Hero />
 
       {/* --- WORK SECTION (The Bento Grid) --- */}
-      <section id="work" className="py-24 px-4 md:px-6 max-w-[1400px] mx-auto">
+      <Section id="work">
         <div className="text-center mb-16 fade-in-up">
           <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-4">Portfoli<span className="text-gray-400">OS</span>.</h2>
           <p className="text-xl text-gray-500">The power of design. In your hands.</p>
@@ -191,7 +186,6 @@ export default function ApplePortfolio() {
               type="Corporate Identity"
               title="PETRONAS"
               subtitle="Fueling the visual narrative of a nation."
-              description="Internal marketing materials and branding consistency for Malaysia's oil & gas giant."
               image="https://images.unsplash.com/photo-1567789884554-0b844b597180?auto=format&fit=crop&q=80&w=2000"
               dark={true}
             />
@@ -216,7 +210,7 @@ export default function ApplePortfolio() {
             />
           </div>
         </div>
-      </section>
+      </Section>
 
       {/* --- PHILOSOPHY SECTION (Apple Values Style) --- */}
       <section id="about" className="bg-white py-32 overflow-hidden">
@@ -242,8 +236,8 @@ export default function ApplePortfolio() {
       </section>
 
       {/* --- SPECS GRID (Services) --- */}
-      <section id="services" className="py-24 bg-[#f5f5f7]">
-        <div className="max-w-[1200px] mx-auto px-6">
+      <Section id="services" className="bg-[#f5f5f7]">
+        <div className="max-w-[1200px] mx-auto">
            <h3 className="text-3xl font-bold text-center mb-16 tracking-tight">Which creative solution is right for you?</h3>
            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 divide-y md:divide-y-0 md:divide-x divide-gray-200">
               <SpecItem 
@@ -263,7 +257,7 @@ export default function ApplePortfolio() {
               />
            </div>
         </div>
-      </section>
+      </Section>
 
       {/* --- FOOTER (Apple Sitemap Style) --- */}
       <footer id="footer" className="bg-[#f5f5f7] text-xs text-gray-500 py-12 border-t border-gray-200">
@@ -276,36 +270,35 @@ export default function ApplePortfolio() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">Shop & Learn</h4>
+              <h4 className="font-semibold text-gray-900 mb-2">Projects</h4>
               <ul className="space-y-2">
-                <li><a href="#" className="hover:underline">Store</a></li>
-                <li><a href="#" className="hover:underline">Mac</a></li>
-                <li><a href="#" className="hover:underline">iPad</a></li>
+                <li><a href="#work" className="hover:underline">Corporate</a></li>
+                <li><a href="#work" className="hover:underline">Government</a></li>
+                <li><a href="#work" className="hover:underline">Hospitality</a></li>
               </ul>
             </div>
             <div>
               <h4 className="font-semibold text-gray-900 mb-2">Services</h4>
               <ul className="space-y-2">
-                <li><a href="#" className="hover:underline">Branding</a></li>
-                <li><a href="#" className="hover:underline">Photography</a></li>
-                <li><a href="#" className="hover:underline">Social Media</a></li>
+                <li><a href="#services" className="hover:underline">Branding</a></li>
+                <li><a href="#services" className="hover:underline">Photography</a></li>
+                <li><a href="#services" className="hover:underline">Social Media</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">Account</h4>
+              <h4 className="font-semibold text-gray-900 mb-2">Connect</h4>
               <ul className="space-y-2">
-                <li><a href="#" className="hover:underline">Manage Your ID</a></li>
-                <li><a href="#" className="hover:underline">Store Account</a></li>
-                <li><a href="#" className="hover:underline">iCloud.com</a></li>
+                <li><a href="#" className="hover:underline">LinkedIn</a></li>
+                <li><a href="#" className="hover:underline">Instagram</a></li>
+                <li><a href="#" className="hover:underline">Email</a></li>
               </ul>
             </div>
             <div>
               <h4 className="font-semibold text-gray-900 mb-2">About Me</h4>
               <ul className="space-y-2">
-                <li><a href="#" className="hover:underline">Newsroom</a></li>
-                <li><a href="#" className="hover:underline">Career</a></li>
-                <li><a href="#" className="hover:underline">Investors</a></li>
-                <li><a href="#" className="hover:underline">Ethics & Compliance</a></li>
+                <li><a href="#about" className="hover:underline">Philosophy</a></li>
+                <li><a href="#" className="hover:underline">Resume</a></li>
+                <li><a href="#" className="hover:underline">Contact</a></li>
               </ul>
             </div>
           </div>
@@ -317,8 +310,6 @@ export default function ApplePortfolio() {
             <div className="flex space-x-6">
               <a href="#" className="hover:text-gray-900 transition-colors">Privacy Policy</a>
               <a href="#" className="hover:text-gray-900 transition-colors">Terms of Use</a>
-              <a href="#" className="hover:text-gray-900 transition-colors">Sales and Refunds</a>
-              <a href="#" className="hover:text-gray-900 transition-colors">Legal</a>
               <a href="#" className="hover:text-gray-900 transition-colors">Site Map</a>
             </div>
           </div>
