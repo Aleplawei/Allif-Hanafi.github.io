@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creative Designer Portfolio</title>
+    <title>Allif Hanafi | Creative Designer</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -15,9 +15,6 @@
     <!-- Babel (untuk translate JSX dalam browser) -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-    <!-- Lucide Icons (Development Version) -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-
     <style>
         /* Custom Font Setup - Menggunakan Inter sebagai pengganti San Francisco */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
@@ -26,6 +23,8 @@
             font-family: 'Inter', sans-serif;
             background-color: #f5f5f7;
             color: #1d1d1f;
+            margin: 0;
+            padding: 0;
         }
 
         .fade-in-up {
@@ -44,16 +43,30 @@
         ::-webkit-scrollbar-thumb { background: #c1c1c1; border-radius: 5px; }
         ::-webkit-scrollbar-thumb:hover { background: #a8a8a8; }
         html { scroll-behavior: smooth; }
+        
+        /* Loading state fallback */
+        #root:empty::before {
+            content: 'Loading...';
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #86868b;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
     <div id="root"></div>
 
     <script type="text/babel">
+        // Debugging log to check if script runs
+        console.log("Starting Portfolio App...");
+
         const { useState, useEffect } = React;
 
         // --- ICONS (SVG Manual Definition for Single File Usage) ---
-        // Kita define icon secara manual sebab tak boleh guna 'import' dalam fail HTML biasa tanpa build tool.
+        // Defined manually to remove dependency on external script libraries
         
         const ChevronRight = ({ size = 24, className = "" }) => (
             <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="m9 18 6-6-6-6"/></svg>
@@ -315,6 +328,8 @@
 
         const root = ReactDOM.createRoot(document.getElementById('root'));
         root.render(<ApplePortfolio />);
+        
+        console.log("Portfolio mounted successfully.");
     </script>
 </body>
 </html>
