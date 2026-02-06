@@ -3,435 +3,379 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AURA Athletics | Prestasi Tanpa Batas</title>
-    <!-- Tailwind CSS (Framework untuk penggayaan pantas & moden) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Inter (Mirip San Francisco Apple) -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <!-- Phosphor Icons (Ikon Minimalis) -->
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
-
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f5f5f7; /* Apple's light gray background */
-            color: #1d1d1f;
-        }
-        
-        /* Custom Animations */
-        .fade-in-up {
-            animation: fadeInUp 0.8s ease-out forwards;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .glass-nav {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-        }
-
-        /* Hide scrollbar for gallery but keep functionality */
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-    </style>
+    <title>Portfolio Pereka Grafik - Profesional & Premium</title>
+    <meta name="description" content="Portfolio Pereka Grafik Bertaraf Dunia. Minimalis, Fungsional, Ikonik.">
     
-    <!-- Konfigurasi Tema Tailwind -->
+    <!-- Menggunakan Tailwind CSS (Melalui CDN untuk kemudahan tanpa install) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter (Alternatif terbaik kepada San Francisco Apple) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons untuk Ikon Vektor yang Tajam -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
     <script>
         tailwind.config = {
             theme: {
                 extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
                     colors: {
-                        aura: {
-                            black: '#1d1d1f',
-                            blue: '#0071e3', /* Apple Blue */
-                            gray: '#86868b',
-                            light: '#f5f5f7'
-                        }
+                        'apple-gray': '#f5f5f7',
+                        'apple-dark': '#1d1d1f',
+                        'apple-blue': '#0066cc',
+                        'apple-blue-hover': '#004499',
                     }
                 }
             }
         }
     </script>
+
+    <style>
+        /* CSS Custom untuk feel Apple */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fff;
+            color: #1d1d1f;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Animasi Masuk (Fade Up) */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hide scrollbar for clean look in horizontal scrolls if any */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Glassmorphism Nav */
+        .glass-nav {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+        }
+    </style>
 </head>
-<body class="antialiased">
+<body class="bg-white">
 
     <!-- NAVIGATION BAR -->
-    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
+    <nav class="fixed w-full z-50 glass-nav border-b border-gray-200 transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-12">
-                <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.scrollTo(0,0)">
-                    <i class="ph-fill ph-infinity text-2xl mr-2"></i>
-                    <span class="font-bold text-lg tracking-tight">AURA</span>
+                <!-- Logo / Nama -->
+                <div class="flex-shrink-0 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <span class="text-xl font-semibold tracking-tight">ALLIF<span class="text-gray-500">HNFI</span></span>
                 </div>
-
+                
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex space-x-8 text-xs font-medium text-gray-600">
-                    <a href="#lelaki" class="hover:text-black transition-colors">Project</a>
-                    <a href="#wanita" class="hover:text-black transition-colors">About</a>
-                    <a href="#koleksi" class="hover:text-black transition-colors">Milestone</a>
-                    <a href="#teknologi" class="hover:text-black transition-colors">Teknologi</a>
-                    <a href="#aksesori" class="hover:text-black transition-colors">Contact</a>
+                    <a href="#utama" class="hover:text-black transition-colors">Home</a>
+                    <a href="#projek" class="hover:text-black transition-colors">Project</a>
+                    <a href="#servis" class="hover:text-black transition-colors">About</a>
+                    <a href="#tentang" class="hover:text-black transition-colors">Milestone</a>
+                    <a href="#hubungi" class="bg-black text-white px-4 py-1.5 rounded-full hover:bg-gray-800 transition-transform hover:scale-105">Hit Me Up!</a>
                 </div>
 
-                <!-- Icons Right -->
-                <div class="flex items-center space-x-4">
-                    <button class="text-gray-600 hover:text-black transition-colors">
-                        <i class="ph ph-magnifying-glass text-lg"></i>
-                    </button>
-                    <button class="text-gray-600 hover:text-black transition-colors relative" onclick="openCart()">
-                        <i class="ph ph-bag text-lg"></i>
-                        <span id="cart-count" class="absolute -top-1 -right-1 bg-aura-blue text-white text-[10px] w-3 h-3 flex items-center justify-center rounded-full hidden">0</span>
-                    </button>
-                    <!-- Mobile Menu Button -->
-                    <button class="md:hidden text-gray-600" onclick="toggleMenu()">
-                        <i class="ph ph-list text-xl"></i>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-black focus:outline-none">
+                        <i data-lucide="menu" class="h-6 w-6"></i>
                     </button>
                 </div>
             </div>
         </div>
 
-        <!-- Mobile Menu Dropdown -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-100 absolute w-full h-screen">
-            <div class="px-4 pt-8 pb-4 space-y-4 flex flex-col text-2xl font-semibold">
-                <a href="#lelaki" class="block text-gray-800 hover:text-aura-blue" onclick="toggleMenu()">Lelaki</a>
-                <a href="#wanita" class="block text-gray-800 hover:text-aura-blue" onclick="toggleMenu()">Wanita</a>
-                <a href="#koleksi" class="block text-gray-800 hover:text-aura-blue" onclick="toggleMenu()">Koleksi</a>
-                <a href="#teknologi" class="block text-gray-800 hover:text-aura-blue" onclick="toggleMenu()">Teknologi</a>
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-xl absolute w-full border-b border-gray-200">
+            <div class="px-4 pt-2 pb-6 space-y-4 shadow-lg">
+                <a href="#utama" class="block text-lg font-medium text-gray-800 border-b border-gray-100 pb-2">Utama</a>
+                <a href="#projek" class="block text-lg font-medium text-gray-800 border-b border-gray-100 pb-2">Portfolio</a>
+                <a href="#servis" class="block text-lg font-medium text-gray-800 border-b border-gray-100 pb-2">Servis</a>
+                <a href="#tentang" class="block text-lg font-medium text-gray-800 border-b border-gray-100 pb-2">Tentang Saya</a>
+                <a href="#hubungi" class="block text-lg font-medium text-apple-blue font-semibold">Hubungi Saya</a>
             </div>
         </div>
     </nav>
 
-    <!-- HERO SECTION (Full Screen) -->
-    <section class="relative h-screen flex items-center justify-center overflow-hidden bg-black text-white">
-        <!-- Background Image -->
-        <div class="absolute inset-0 z-0">
-            <img src="Untitled-1.jpg" 
-                 alt="Athlete Training" 
-                 class="w-full h-full object-cover opacity-70">
+    <!-- HERO SECTION (Gaya Utama Apple) -->
+    <section id="utama" class="pt-32 pb-16 md:pt-48 md:pb-32 px-4 text-center max-w-7xl mx-auto min-h-screen flex flex-col justify-center items-center">
+        <div class="reveal">
+            <h2 class="text-orange-600 font-semibold text-lg md:text-xl mb-2 tracking-wide">Professional. Creative. Unmatched.</h2>
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-apple-dark mb-6">
+                Design That Speaks<br>For Itself.
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-500 max-w-2xl mx-auto mb-10 font-normal leading-relaxed">
+                Creating world-class visual identities for brands that dare to lead.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="#projek" class="bg-apple-blue text-white px-8 py-3 rounded-full text-lg hover:bg-apple-blue-hover transition-all duration-300 transform hover:scale-105 shadow-lg">
+                    Explore Project
+                </a>
+                <a href="#hubungi" class="text-apple-blue text-lg hover:underline flex items-center gap-1 group">
+                    Lets Talk About It ? <i data-lucide="chevron-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </div>
         </div>
         
-        <!-- Content -->
-        <div class="relative z-10 text-center px-4 fade-in-up">
-            <h2 class="text-xl md:text-2xl font-medium mb-2 text-gray-300">Siri AURA Pro</h2>
-            <h1 class="text-5xl md:text-7xl font-bold mb-6 tracking-tight">Ringan. Pantas. Berkuasa.</h1>
-            <p class="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
-                Direka dengan teknologi Aeroflow™ untuk atlet yang inginkan lebih daripada sekadar pakaian.
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <button onclick="scrollToSection('koleksi')" class="bg-white text-black px-8 py-3 rounded-full font-medium hover:bg-gray-100 transition duration-300">
-                    Beli Sekarang
-                </button>
-                <button onclick="scrollToSection('teknologi')" class="border border-white text-white px-8 py-3 rounded-full font-medium hover:bg-white/10 transition duration-300">
-                    Ketahui Lebih Lanjut
-                </button>
+        <!-- Placeholder Image Hero (Abstract/Clean) -->
+        <div class="mt-16 w-full max-w-5xl mx-auto reveal delay-200">
+             <div class="aspect-video bg-gradient-to-tr from-gray-100 to-gray-200 rounded-3xl shadow-2xl flex items-center justify-center overflow-hidden relative">
+                <!-- Anda boleh ganti div ini dengan <img> sebenar nanti -->
+                <div class="absolute inset-0 bg-black/5"></div>
+                <p class="text-gray-400 font-medium z-10">[Ruang Letak Gambar Hero / Showreel Utama]</p>
             </div>
         </div>
     </section>
 
-    <!-- SECTION: LELAKI (Bento Grid Layout Style) -->
-    <section id="lelaki" class="py-20 px-4 max-w-7xl mx-auto">
-        <div class="mb-10 text-center">
-            <h2 class="text-4xl font-bold mb-2">Lelaki</h2>
-            <p class="text-aura-gray">Prestasi tinggi untuk setiap langkah.</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <!-- Large Card -->
-            <div class="group relative bg-white h-[600px] rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer">
-                <img src="https://images.unsplash.com/photo-1556906781-9a412961d28c?q=80&w=2070&auto=format&fit=crop" alt="Running Shoes" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                <div class="absolute top-10 left-0 right-0 text-center z-10">
-                    <p class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-1">Kasut Larian</p>
-                    <h3 class="text-3xl font-bold text-gray-900">AURA Velocity X</h3>
-                    <div class="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <button onclick="addToCart('Velocity X')" class="bg-aura-blue text-white px-6 py-2 rounded-full text-sm">Beli RM399</button>
-                    </div>
-                </div>
+    <!-- PORTFOLIO GRID (Bento Style) -->
+    <section id="projek" class="bg-apple-gray py-24 px-4 sm:px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl md:text-5xl font-bold text-apple-dark mb-4">Karya Terkini.</h2>
+                <p class="text-xl text-gray-500">Sentuhan magis dalam setiap piksel.</p>
             </div>
 
-            <!-- Stacked Cards -->
-            <div class="flex flex-col gap-6 h-[600px]">
-                <div class="group relative bg-black flex-1 rounded-3xl overflow-hidden cursor-pointer">
-                    <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?q=80&w=2787&auto=format&fit=crop" alt="Gym Wear" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700">
-                    <div class="absolute bottom-8 left-8 text-white">
-                        <h3 class="text-2xl font-bold">Baju Kompresi</h3>
-                        <p class="text-gray-300 text-sm mb-3">Sokongan otot maksimum.</p>
-                        <button onclick="addToCart('Baju Kompresi')" class="text-white hover:underline text-sm font-medium">Lihat Koleksi &rsaquo;</button>
-                    </div>
-                </div>
-                <div class="group relative bg-gray-100 flex-1 rounded-3xl overflow-hidden cursor-pointer">
-                    <img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?q=80&w=2070&auto=format&fit=crop" alt="Joggers" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                    <div class="absolute top-8 left-8 text-black">
-                        <h3 class="text-2xl font-bold">Seluar Trek Flex</h3>
-                        <p class="text-gray-600 text-sm mb-3">Gaya & Keselesaan.</p>
-                        <button onclick="addToCart('Seluar Trek')" class="text-aura-blue hover:underline text-sm font-medium">Lihat Koleksi &rsaquo;</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION: TEKNOLOGI (Full Width Visual) -->
-    <section id="teknologi" class="py-10 bg-black text-white">
-        <div class="max-w-7xl mx-auto px-4 py-20 text-center">
-            <span class="text-aura-blue font-bold tracking-widest uppercase text-sm">Inovasi</span>
-            <h2 class="text-4xl md:text-6xl font-bold mt-4 mb-6">Fabrik Aeroflow™</h2>
-            <p class="text-xl text-gray-400 max-w-3xl mx-auto mb-12">
-                Sistem pengudaraan mikro yang memastikan badan anda kekal kering walaupun dalam intensiti tertinggi. 
-                Diuji oleh atlet profesional dunia.
-            </p>
-            <div class="relative w-full h-[500px] rounded-3xl overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1517963879433-6ad2b056d712?q=80&w=2070&auto=format&fit=crop" alt="Fabric Texture" class="w-full h-full object-cover opacity-60 hover:opacity-80 transition-opacity duration-500">
-                <div class="absolute inset-0 flex items-center justify-center">
-                    <button class="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/40 transition-all">
-                        <i class="ph-fill ph-play text-white text-2xl"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION: WANITA (Carousel Style) -->
-    <section id="wanita" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="flex justify-between items-end mb-8">
-                <div>
-                    <h2 class="text-4xl font-bold text-gray-900">Wanita</h2>
-                    <p class="text-gray-500 mt-2">Koleksi musim luruh kini tiba.</p>
-                </div>
-                <div class="flex gap-2">
-                    <button class="p-2 rounded-full bg-gray-100 hover:bg-gray-200" onclick="scrollGallery('left')"><i class="ph ph-caret-left"></i></button>
-                    <button class="p-2 rounded-full bg-gray-100 hover:bg-gray-200" onclick="scrollGallery('right')"><i class="ph ph-caret-right"></i></button>
-                </div>
-            </div>
-
-            <!-- Horizontal Scroll Container -->
-            <div id="gallery-scroll" class="flex overflow-x-auto gap-6 pb-8 no-scrollbar snap-x snap-mandatory">
+            <!-- Grid Layout -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 
-                <!-- Card 1 -->
-                <div class="min-w-[300px] md:min-w-[400px] snap-center">
-                    <div class="group relative rounded-2xl overflow-hidden h-[500px] bg-gray-50">
-                        <img src="https://images.unsplash.com/photo-1518310383802-640c2de311b2?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute bottom-0 w-full p-6 bg-gradient-to-t from-black/60 to-transparent text-white">
-                            <h3 class="text-xl font-bold">Yoga Essentials</h3>
-                            <button onclick="addToCart('Yoga Set')" class="mt-2 text-sm underline opacity-0 group-hover:opacity-100 transition-opacity">Tambah ke Beg</button>
+                <!-- Item 1 (Large Span) -->
+                <div class="reveal md:col-span-2 bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 group cursor-pointer h-[500px] relative">
+                    <div class="absolute inset-0 bg-gray-100 flex items-center justify-center">
+                         <span class="text-gray-300 text-6xl font-bold opacity-20 group-hover:scale-110 transition-transform duration-700">BRANDING</span>
+                    </div>
+                    <div class="absolute bottom-0 left-0 p-8 w-full bg-gradient-to-t from-black/60 to-transparent">
+                        <p class="text-white/80 font-semibold mb-1 uppercase text-xs tracking-widest">Penjenamaan Korporat</p>
+                        <h3 class="text-white text-3xl font-bold">Projek Alpha: Identiti Semula.</h3>
+                        <div class="mt-4 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                            <button class="bg-white text-black px-5 py-2 rounded-full text-sm font-medium">Lihat Detail</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Card 2 -->
-                <div class="min-w-[300px] md:min-w-[400px] snap-center">
-                    <div class="group relative rounded-2xl overflow-hidden h-[500px] bg-gray-50">
-                        <img src="https://images.unsplash.com/photo-1483721310020-03333e577078?q=80&w=2128&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute bottom-0 w-full p-6 bg-gradient-to-t from-black/60 to-transparent text-white">
-                            <h3 class="text-xl font-bold">Run Free Top</h3>
-                            <button onclick="addToCart('Running Top')" class="mt-2 text-sm underline opacity-0 group-hover:opacity-100 transition-opacity">Tambah ke Beg</button>
-                        </div>
+                <!-- Item 2 -->
+                <div class="reveal bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 group cursor-pointer h-[500px] relative">
+                    <div class="absolute inset-0 bg-black flex items-center justify-center">
+                         <span class="text-white text-6xl font-bold opacity-20 group-hover:rotate-12 transition-transform duration-700">UI/UX</span>
+                    </div>
+                    <div class="absolute top-0 left-0 p-8 w-full">
+                        <h3 class="text-white text-2xl font-bold">Aplikasi FinTech</h3>
+                        <p class="text-gray-400 mt-2">Reka bentuk antaramuka moden.</p>
+                    </div>
+                    <div class="absolute bottom-8 right-8 bg-white/20 backdrop-blur-md p-3 rounded-full group-hover:bg-white group-hover:text-black transition-colors text-white">
+                        <i data-lucide="arrow-up-right" class="w-6 h-6"></i>
                     </div>
                 </div>
 
-                <!-- Card 3 -->
-                <div class="min-w-[300px] md:min-w-[400px] snap-center">
-                    <div class="group relative rounded-2xl overflow-hidden h-[500px] bg-gray-50">
-                        <img src="https://images.unsplash.com/photo-1571731956672-f2b94d7dd0cb?q=80&w=2788&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute bottom-0 w-full p-6 bg-gradient-to-t from-black/60 to-transparent text-white">
-                            <h3 class="text-xl font-bold">Weights Series</h3>
-                            <button onclick="addToCart('Gym Gloves')" class="mt-2 text-sm underline opacity-0 group-hover:opacity-100 transition-opacity">Tambah ke Beg</button>
+                <!-- Item 3 -->
+                <div class="reveal bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 group cursor-pointer h-[500px] relative">
+                     <div class="absolute inset-0 bg-blue-50 flex items-center justify-center">
+                         <span class="text-blue-200 text-6xl font-bold opacity-40">SOCIAL</span>
+                    </div>
+                    <div class="p-8 flex flex-col h-full justify-between">
+                        <div>
+                            <p class="text-blue-600 font-semibold mb-2">Media Sosial</p>
+                            <h3 class="text-3xl font-bold text-apple-dark">Visual Kempen Viral.</h3>
                         </div>
+                        <img src="https://via.placeholder.com/300x200/eee/ccc?text=Mockup" alt="Mockup" class="w-full rounded-xl shadow-lg transform group-hover:-translate-y-2 transition-transform">
                     </div>
                 </div>
-                 <!-- Card 4 -->
-                 <div class="min-w-[300px] md:min-w-[400px] snap-center">
-                    <div class="group relative rounded-2xl overflow-hidden h-[500px] bg-gray-50">
-                        <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=2069&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute bottom-0 w-full p-6 bg-gradient-to-t from-black/60 to-transparent text-white">
-                            <h3 class="text-xl font-bold">Cardio Cool</h3>
-                            <button onclick="addToCart('Cardio Set')" class="mt-2 text-sm underline opacity-0 group-hover:opacity-100 transition-opacity">Tambah ke Beg</button>
-                        </div>
+
+                <!-- Item 4 (Large Span Bottom) -->
+                <div class="reveal md:col-span-2 bg-black rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 group cursor-pointer h-[500px] relative text-white">
+                    <div class="p-10 flex flex-col justify-center h-full items-center text-center z-10 relative">
+                        <h3 class="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">Revolusi 3D & Animasi</h3>
+                        <p class="text-gray-400 text-lg max-w-lg mx-auto">Membawa grafik statik ke dimensi baharu dengan pergerakan yang memukau.</p>
+                        <button class="mt-8 border border-white/30 text-white px-6 py-2 rounded-full hover:bg-white hover:text-black transition-colors">Tonton Showreel</button>
                     </div>
+                     <!-- Decorative abstract background -->
+                    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-30"></div>
                 </div>
 
             </div>
         </div>
     </section>
 
-    <!-- SECTION: KOLEKSI AKSESORI (Grid Kecil) -->
-    <section id="aksesori" class="py-20 bg-aura-light border-t border-gray-200">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold mb-10">Aksesori Penting</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <!-- Item 1 -->
-                <div class="bg-white p-6 rounded-2xl hover:shadow-lg transition-shadow duration-300 text-center cursor-pointer group">
-                    <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?q=80&w=2070&auto=format&fit=crop" class="w-full h-40 object-contain mb-4 group-hover:scale-110 transition-transform">
-                    <h4 class="font-semibold text-gray-900">Botol Hidrasi</h4>
-                    <p class="text-xs text-gray-500 mt-1">Stok Baharu</p>
-                    <span class="block mt-2 text-aura-blue text-sm">RM 89</span>
+    <!-- SERVICES (Grid Ikon Besar) -->
+    <section id="servis" class="py-24 px-4 bg-white">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 reveal">Kepakaran Saya.</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+                <!-- Service 1 -->
+                <div class="reveal group">
+                    <div class="w-20 h-20 mx-auto bg-gray-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-apple-blue group-hover:text-white transition-colors duration-300 text-gray-800">
+                        <i data-lucide="pen-tool" class="w-10 h-10"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Identiti Jenama</h3>
+                    <p class="text-gray-500 leading-relaxed">Dari logo hingga panduan gaya korporat yang lengkap dan konsisten.</p>
                 </div>
-                 <!-- Item 2 -->
-                 <div class="bg-white p-6 rounded-2xl hover:shadow-lg transition-shadow duration-300 text-center cursor-pointer group">
-                    <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?q=80&w=2070&auto=format&fit=crop" class="w-full h-40 object-contain mb-4 group-hover:scale-110 transition-transform">
-                    <h4 class="font-semibold text-gray-900">Beg Sukan</h4>
-                    <p class="text-xs text-gray-500 mt-1">Kalis Air</p>
-                    <span class="block mt-2 text-aura-blue text-sm">RM 159</span>
+
+                <!-- Service 2 -->
+                <div class="reveal delay-100 group">
+                    <div class="w-20 h-20 mx-auto bg-gray-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-apple-blue group-hover:text-white transition-colors duration-300 text-gray-800">
+                        <i data-lucide="monitor" class="w-10 h-10"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Reka Bentuk Web & UI</h3>
+                    <p class="text-gray-500 leading-relaxed">Reka bentuk laman web yang responsif, intuitif, dan mesra pengguna.</p>
                 </div>
-                 <!-- Item 3 -->
-                 <div class="bg-white p-6 rounded-2xl hover:shadow-lg transition-shadow duration-300 text-center cursor-pointer group">
-                    <img src="https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?q=80&w=2071&auto=format&fit=crop" class="w-full h-40 object-contain mb-4 group-hover:scale-110 transition-transform">
-                    <h4 class="font-semibold text-gray-900">Topi Larian</h4>
-                    <p class="text-xs text-gray-500 mt-1">Ringan</p>
-                    <span class="block mt-2 text-aura-blue text-sm">RM 69</span>
-                </div>
-                 <!-- Item 4 -->
-                 <div class="bg-white p-6 rounded-2xl hover:shadow-lg transition-shadow duration-300 text-center cursor-pointer group">
-                    <img src="https://images.unsplash.com/photo-1511556532299-8f662fc26c06?q=80&w=2070&auto=format&fit=crop" class="w-full h-40 object-contain mb-4 group-hover:scale-110 transition-transform">
-                    <h4 class="font-semibold text-gray-900">Smart Band</h4>
-                    <p class="text-xs text-gray-500 mt-1">Penjejak Nadi</p>
-                    <span class="block mt-2 text-aura-blue text-sm">RM 299</span>
+
+                <!-- Service 3 -->
+                <div class="reveal delay-200 group">
+                    <div class="w-20 h-20 mx-auto bg-gray-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-apple-blue group-hover:text-white transition-colors duration-300 text-gray-800">
+                        <i data-lucide="layers" class="w-10 h-10"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Bahan Pemasaran</h3>
+                    <p class="text-gray-500 leading-relaxed">Brosur, pembungkusan, dan visual media sosial yang menarik perhatian.</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- ABOUT / BIG TEXT SECTION -->
+    <section id="tentang" class="py-32 bg-apple-gray px-4">
+        <div class="max-w-4xl mx-auto text-center reveal">
+            <p class="text-lg font-semibold text-gray-400 mb-6 uppercase tracking-widest">Mengenai Saya</p>
+            <h2 class="text-3xl md:text-5xl font-bold leading-tight text-apple-dark">
+                "Saya bukan sekadar pereka grafik. Saya adalah penyelesai masalah visual. Dengan pengalaman lebih 10 tahun, saya menggabungkan seni dan strategi untuk hasil yang luar biasa."
+            </h2>
+            <div class="mt-12 flex justify-center gap-8">
+                <div class="text-center">
+                    <span class="block text-4xl font-bold text-black">10+</span>
+                    <span class="text-sm text-gray-500">Tahun Pengalaman</span>
+                </div>
+                <div class="text-center">
+                    <span class="block text-4xl font-bold text-black">150+</span>
+                    <span class="text-sm text-gray-500">Projek Berjaya</span>
+                </div>
+                <div class="text-center">
+                    <span class="block text-4xl font-bold text-black">100%</span>
+                    <span class="text-sm text-gray-500">Kepuasan Klien</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT CTA -->
+    <section id="hubungi" class="py-24 px-4 bg-white text-center">
+        <div class="max-w-3xl mx-auto reveal">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">Ada projek besar?</h2>
+            <p class="text-xl text-gray-500 mb-10">Mari kita cipta sesuatu yang ikonik bersama-sama.</p>
+            <a href="mailto:email@anda.com" class="inline-block bg-apple-blue text-white px-10 py-4 rounded-full text-xl font-medium hover:bg-apple-blue-hover transition-transform hover:scale-105 shadow-xl">
+                Hubungi Saya
+            </a>
+            <p class="mt-6 text-sm text-gray-400">Atau hubungi melalui WhatsApp di <a href="#" class="text-apple-blue hover:underline">+60 12-345 6789</a></p>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-aura-light pt-16 pb-8 text-xs text-gray-500 border-t border-gray-200">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8 border-b border-gray-300 pb-8">
+    <footer class="bg-apple-gray text-xs text-gray-500 py-10 px-4 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
                 <div>
-                    <h3 class="font-semibold text-gray-900 mb-3">Mengenai AURA</h3>
+                    <h4 class="font-semibold text-gray-900 mb-2">Pautan Pantas</h4>
                     <ul class="space-y-2">
-                        <li><a href="#" class="hover:underline">Berita</a></li>
-                        <li><a href="#" class="hover:underline">Kerjaya</a></li>
-                        <li><a href="#" class="hover:underline">Pelabur</a></li>
-                        <li><a href="#" class="hover:underline">Kelestarian</a></li>
+                        <li><a href="#utama" class="hover:underline">Utama</a></li>
+                        <li><a href="#projek" class="hover:underline">Portfolio</a></li>
+                        <li><a href="#servis" class="hover:underline">Servis</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h3 class="font-semibold text-gray-900 mb-3">Bantuan</h3>
+                    <h4 class="font-semibold text-gray-900 mb-2">Sosial</h4>
                     <ul class="space-y-2">
-                        <li><a href="#" class="hover:underline">Status Pesanan</a></li>
-                        <li><a href="#" class="hover:underline">Penghantaran</a></li>
-                        <li><a href="#" class="hover:underline">Pemulangan</a></li>
-                        <li><a href="#" class="hover:underline">Hubungi Kami</a></li>
+                        <li><a href="#" class="hover:underline">LinkedIn</a></li>
+                        <li><a href="#" class="hover:underline">Instagram</a></li>
+                        <li><a href="#" class="hover:underline">Behance</a></li>
                     </ul>
                 </div>
-                <div class="col-span-2 md:col-span-2">
-                    <h3 class="font-semibold text-gray-900 mb-3">Langgan Berita</h3>
-                    <p class="mb-4">Dapatkan info terkini mengenai produk dan tawaran eksklusif.</p>
-                    <div class="flex gap-2">
-                        <input type="email" placeholder="Emel anda" class="p-2 border rounded-md w-full md:w-64 bg-white">
-                        <button class="bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800">Hantar</button>
-                    </div>
+                <div>
+                    <h4 class="font-semibold text-gray-900 mb-2">Legal</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:underline">Terma & Syarat</a></li>
+                        <li><a href="#" class="hover:underline">Polisi Privasi</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-gray-900 mb-2">Lokasi</h4>
+                    <p>Kuala Lumpur, Malaysia</p>
+                    <p>Tersedia untuk kerja Remote</p>
                 </div>
             </div>
-            
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <p>Copyright © 2024 AURA Athletics Malaysia. Hak Cipta Terpelihara.</p>
-                <div class="flex space-x-4 mt-4 md:mt-0">
-                    <a href="#" class="hover:text-black">Dasar Privasi</a>
-                    <span class="border-l border-gray-300 h-3 self-center"></span>
-                    <a href="#" class="hover:text-black">Terma Penggunaan</a>
-                    <span class="border-l border-gray-300 h-3 self-center"></span>
-                    <a href="#" class="hover:text-black">Peta Laman</a>
-                </div>
+            <div class="pt-8 border-t border-gray-300 flex flex-col md:flex-row justify-between items-center">
+                <p>Copyright © 2024 Nama Anda. Hak Cipta Terpelihara.</p>
+                <p class="mt-2 md:mt-0">Direka dengan inspirasi Apple.</p>
             </div>
         </div>
     </footer>
 
-    <!-- TOAST NOTIFICATION (Hidden by default) -->
-    <div id="toast" class="fixed bottom-5 left-1/2 transform -translate-x-1/2 bg-black/90 backdrop-blur text-white px-6 py-3 rounded-full shadow-2xl flex items-center gap-3 transition-all duration-500 translate-y-20 opacity-0 z-50">
-        <i class="ph-fill ph-check-circle text-green-500 text-xl"></i>
-        <span id="toast-message">Item ditambah ke beg</span>
-    </div>
-
     <!-- JAVASCRIPT LOGIC -->
     <script>
-        // 1. Mobile Menu Toggle
-        function toggleMenu() {
-            const menu = document.getElementById('mobile-menu');
-            const icon = document.querySelector('.ph-list');
-            
-            if (menu.classList.contains('hidden')) {
-                menu.classList.remove('hidden');
-                document.body.style.overflow = 'hidden'; // Prevent scrolling
-            } else {
-                menu.classList.add('hidden');
-                document.body.style.overflow = 'auto'; // Enable scrolling
-            }
-        }
+        // 1. Initialize Icons
+        lucide.createIcons();
 
-        // 2. Smooth Scroll to Sections
-        function scrollToSection(id) {
-            const element = document.getElementById(id);
-            if(element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-
-        // 3. Scroll Gallery Logic (Horizontal Scroll)
-        function scrollGallery(direction) {
-            const container = document.getElementById('gallery-scroll');
-            const scrollAmount = 400; // Width of one card roughly
-            
-            if (direction === 'left') {
-                container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-            } else {
-                container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-            }
-        }
-
-        // 4. Cart Logic (Simulation)
-        let cartTotal = 0;
+        // 2. Mobile Menu Logic
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
         
-        function addToCart(productName) {
-            // Update counter
-            cartTotal++;
-            const countBadge = document.getElementById('cart-count');
-            countBadge.innerText = cartTotal;
-            countBadge.classList.remove('hidden');
-            
-            // Show toast
-            const toast = document.getElementById('toast');
-            const msg = document.getElementById('toast-message');
-            
-            msg.innerText = `${productName} ditambah ke beg`;
-            toast.classList.remove('translate-y-20', 'opacity-0');
-            
-            // Hide toast after 3 seconds
-            setTimeout(() => {
-                toast.classList.add('translate-y-20', 'opacity-0');
-            }, 3000);
-        }
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
 
-        function openCart() {
-            if(cartTotal === 0) {
-                alert("Beg anda kosong. Sila pilih produk hebat kami!");
-            } else {
-                alert(`Anda ada ${cartTotal} item dalam beg. Teruskan ke pembayaran?`);
-            }
-        }
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
 
-        // 5. Navbar Transition on Scroll
-        window.addEventListener('scroll', () => {
-            const nav = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                nav.classList.add('shadow-sm');
-            } else {
-                nav.classList.remove('shadow-sm');
-            }
+        // 3. Scroll Reveal Animation (Intersection Observer)
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    // Optional: Stop observing once revealed
+                    // observer.unobserve(entry.target); 
+                }
+            });
+        }, {
+            root: null,
+            threshold: 0.1, // Trigger when 10% of element is visible
+            rootMargin: "0px"
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // 4. Smooth Scroll behavior fallback (for older browsers)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement){
+                    const headerOffset = 60;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                    });
+                }
+            });
         });
     </script>
 </body>
