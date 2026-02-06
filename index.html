@@ -4,19 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- SEO & LinkedIn Optimization -->
+    <!-- SEO & LinkedIn Optimization (Shah Alam Injection) -->
     <title>Allif Hanafi | Creative Lead & Graphic Designer Shah Alam</title>
-    <meta name="description" content="Allif Hanafi is a professional Creative Designer based in Shah Alam, Selangor. Specializing in Corporate Branding (Petronas/MOF), UI/UX, and Visual Communication.">
-    <meta name="keywords" content="Graphic Designer Shah Alam, Creative Designer Selangor, UI/UX Malaysia, Corporate Branding, Allif Hanafi Portfolio, Petronas Designer">
+    <meta name="description" content="Allif Hanafi is a professional Creative Designer based in Shah Alam, Selangor. Expert in Corporate Branding (Petronas/MOF), UI/UX Design, and High-End Visual Communication.">
+    <meta name="keywords" content="Graphic Designer Shah Alam, Creative Lead Selangor, Web Designer Malaysia, UI/UX Expert Shah Alam, Branding Specialist, Allif Hanafi, Petronas Designer">
     <meta name="author" content="Allif Hanafi">
     <meta name="robots" content="index, follow">
+    <meta name="geo.region" content="MY-10" />
+    <meta name="geo.placename" content="Shah Alam" />
     
     <!-- Open Graph / LinkedIn -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://allifhanafi.github.io/">
     <meta property="og:title" content="Allif Hanafi | Creative Designer Portfolio">
-    <meta property="og:description" content="Based in Shah Alam. Crafted for Impact. Explore the intersection of corporate precision and creative chaos.">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1626785774573-4b799312c95d?q=80&w=1200&auto=format&fit=crop">
+    <meta property="og:description" content="Precision meets Creativity. Explore the portfolio of Allif Hanafi, a Shah Alam-based designer crafting corporate and digital experiences.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -27,19 +29,20 @@
                 extend: {
                     colors: {
                         brand: {
-                            black: '#050505',
-                            offWhite: '#f5f5f7',
-                            accent: '#2997ff', /* Apple Blue */
+                            black: '#000000',
+                            dark: '#050505',
+                            accent: '#FF2A2A', /* Apple Red/Orange Hybrid */
+                            surface: 'rgba(28, 28, 30, 0.6)',
                         }
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
                     },
                     animation: {
-                        'fade-in': 'fadeIn 1s ease-out forwards',
+                        'fade-in': 'fadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards',
                         'slide-up': 'slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-                        'blob': 'blob 10s infinite',
-                        'liquid': 'liquidFlow 3s linear infinite',
+                        'liquid': 'liquidFlow 6s ease infinite',
+                        'pulse-slow': 'pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                     },
                     keyframes: {
                         fadeIn: {
@@ -47,18 +50,13 @@
                             '100%': { opacity: '1' },
                         },
                         slideUp: {
-                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '0%': { opacity: '0', transform: 'translateY(40px)' },
                             '100%': { opacity: '1', transform: 'translateY(0)' },
-                        },
-                        blob: {
-                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
-                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
-                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
-                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
                         },
                         liquidFlow: {
                             '0%': { backgroundPosition: '0% 50%' },
-                            '100%': { backgroundPosition: '200% 50%' },
+                            '50%': { backgroundPosition: '100% 50%' },
+                            '100%': { backgroundPosition: '0% 50%' },
                         }
                     }
                 }
@@ -74,24 +72,20 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- JSON-LD Structured Data for Google -->
+    <!-- JSON-LD Structured Data for Google SEO -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Allif Hanafi",
-      "jobTitle": "Creative Designer",
+      "jobTitle": "Creative Lead & Graphic Designer",
       "url": "https://allifhanafi.github.io",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Shah Alam",
         "addressRegion": "Selangor",
-        "addressCountry": "MY"
-      },
-      "sameAs": [
-        "https://www.linkedin.com/in/allifhanafi",
-        "https://www.behance.net/allifhanafi"
-      ]
+        "addressCountry": "Malaysia"
+      }
     }
     </script>
 
@@ -99,60 +93,77 @@
         body {
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
-            transition: background-color 0.5s ease, color 0.5s ease;
+            background-color: #000000;
+            color: #ffffff;
         }
 
-        /* --- Liquid Engine 2.0 (The WOW Factor) --- */
-        /* Only applies to the Hero Text */
+        /* --- Liquid Engine 2.0 (Text) --- */
         .liquid-text {
             background-size: 200% auto;
             background-image: linear-gradient(
                 90deg, 
-                #FF0055 0%, 
-                #FF5722 25%, 
-                #D4FF00 50%, 
-                #2997ff 75%, 
-                #FF0055 100%
+                #FF2A2A 0%, 
+                #FF9500 25%, 
+                #FFFFFF 50%, 
+                #007AFF 75%, 
+                #FF2A2A 100%
             );
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             animation: liquidFlow 4s linear infinite;
-            filter: drop-shadow(0 0 20px rgba(212, 255, 0, 0.4));
+            filter: drop-shadow(0 0 30px rgba(255, 42, 42, 0.5));
         }
 
         /* Glassmorphism Header */
         .glass-header {
-            background: rgba(255, 255, 255, 0.01);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(128, 128, 128, 0.1);
+            background: rgba(0, 0, 0, 0.01); /* Ultra transparent initially */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.5s ease;
+        }
+        .glass-header.scrolled {
+            background: rgba(0, 0, 0, 0.6);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* Glass Button Interactive */
-        .glass-btn {
-            background: rgba(128, 128, 128, 0.1);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(128, 128, 128, 0.2);
-            transition: all 0.3s ease;
+        /* Premium Button Styles */
+        .btn-apple {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
         
-        .glass-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.3);
-            border-color: #2997ff;
+        .btn-apple::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0));
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
-        /* Mode Specifics */
-        .dark body { background-color: #050505; color: #f5f5f7; }
-        .light body { background-color: #ffffff; color: #1d1d1f; }
+        .btn-apple:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(255, 42, 42, 0.4);
+        }
+        
+        .btn-apple:active {
+            transform: scale(0.96);
+        }
+        
+        .btn-apple:hover::after {
+            opacity: 1;
+        }
 
-        /* Custom Scrollbar */
+        /* Scrollbar */
         ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: #555; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #888; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #555; }
     </style>
 </head>
 <body class="antialiased dark">
@@ -164,8 +175,11 @@
         // --- ICONS ---
         const Icons = {
             ArrowRight: () => <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>,
+            ArrowLeft: () => <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>,
+            ArrowDown: () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>,
             X: () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>,
             Mail: () => <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>,
+            WhatsApp: () => <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 3.4L3 21"/></svg>,
             Menu: () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>,
             Moon: () => <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>,
             Sun: () => <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>,
@@ -176,11 +190,17 @@
         // --- COMPONENTS ---
 
         const Button = ({ children, onClick, className = '', variant = 'primary' }) => {
-            // Interactive Glass Button Logic
+            const baseClass = "btn-apple px-6 py-2.5 rounded-full font-medium text-sm flex items-center gap-2 cursor-pointer select-none";
+            const variants = {
+                primary: "bg-white text-black border border-transparent",
+                glass: "bg-white/10 backdrop-blur-md border border-white/20 text-white",
+                outline: "border border-white/20 text-white hover:bg-white/5"
+            };
+            
             return (
                 <button 
                     onClick={onClick} 
-                    className={`glass-btn px-6 py-2.5 rounded-full font-medium text-sm flex items-center gap-2 text-current ${className}`}
+                    className={`${baseClass} ${variants[variant]} ${className}`}
                 >
                     {children}
                 </button>
@@ -191,16 +211,18 @@
             if (!isOpen) return null;
             return (
                 <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-                    <div className="absolute inset-0 bg-black/80 backdrop-blur-md transition-opacity" onClick={onClose}></div>
-                    <div className="relative w-full max-w-md bg-[#161617] dark:bg-[#161617] light:bg-white border border-white/10 p-8 rounded-2xl shadow-2xl animate-slide-up">
-                        <button onClick={onClose} className="absolute top-4 right-4 text-gray-500 hover:text-current transition-colors"><Icons.X /></button>
-                        <h2 className="text-2xl font-semibold mb-2 dark:text-white text-black">Let's Collaborate</h2>
-                        <p className="text-gray-500 text-sm mb-6">Based in Shah Alam, available globally.</p>
-                        <div className="space-y-4">
-                            <input type="text" placeholder="Your Name" className="w-full bg-transparent border border-gray-600 rounded-lg p-3 dark:text-white text-black focus:outline-none focus:border-blue-500 transition-colors" />
-                            <textarea rows="3" placeholder="Project Brief..." className="w-full bg-transparent border border-gray-600 rounded-lg p-3 dark:text-white text-black focus:outline-none focus:border-blue-500 transition-colors"></textarea>
-                            <button onClick={() => window.open('mailto:hello@allifhanafi.com')} className="w-full bg-blue-600 text-white font-bold py-3 rounded-lg hover:bg-blue-700 transition-all flex items-center justify-center gap-2">
-                                <Icons.Mail /> Send via Email
+                    <div className="absolute inset-0 bg-black/90 backdrop-blur-xl transition-opacity" onClick={onClose}></div>
+                    <div className="relative w-full max-w-md bg-[#121212] border border-white/10 p-8 rounded-3xl shadow-2xl animate-slide-up">
+                        <button onClick={onClose} className="absolute top-4 right-4 text-gray-500 hover:text-white transition-colors"><Icons.X /></button>
+                        <h2 className="text-2xl font-bold mb-2 text-white">Direct Connect</h2>
+                        <p className="text-gray-500 text-sm mb-6">Choose your preferred communication channel.</p>
+                        
+                        <div className="grid grid-cols-1 gap-4">
+                            <button onClick={() => window.open('mailto:hello@allifhanafi.com')} className="w-full bg-white/5 hover:bg-white/10 border border-white/10 text-white font-medium py-4 rounded-xl transition-all flex items-center justify-center gap-3">
+                                <Icons.Mail /> Email Inquiry
+                            </button>
+                            <button onClick={() => window.open('https://wa.me/60123456789')} className="w-full bg-[#25D366]/20 hover:bg-[#25D366]/30 border border-[#25D366]/50 text-[#25D366] font-medium py-4 rounded-xl transition-all flex items-center justify-center gap-3">
+                                <Icons.WhatsApp /> WhatsApp Business
                             </button>
                         </div>
                     </div>
@@ -208,196 +230,290 @@
             );
         };
 
-        const NavBar = ({ darkMode, toggleTheme, onContact }) => {
+        const NavBar = ({ darkMode, toggleTheme, onContact, navigateHome }) => {
+            const [scrolled, setScrolled] = useState(false);
             const [mobileMenu, setMobileMenu] = useState(false);
 
+            useEffect(() => {
+                const handleScroll = () => setScrolled(window.scrollY > 50);
+                window.addEventListener('scroll', handleScroll);
+                return () => window.removeEventListener('scroll', handleScroll);
+            }, []);
+
             const navs = [
-                { id: 'projects', label: 'Project' },
+                { id: 'projects', label: 'Selected Works' },
                 { id: 'about', label: 'Meet : Creator' },
                 { id: 'expertise', label: 'Expertise' },
             ];
 
-            const scrollToSection = (id) => {
-                const el = document.getElementById(id);
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
+            const handleNavClick = (id) => {
+                navigateHome();
+                setTimeout(() => {
+                    const el = document.getElementById(id);
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
                 setMobileMenu(false);
             };
 
             return (
-                <nav className="fixed top-0 w-full z-50 glass-header">
-                    <div className="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
-                        {/* LOGO */}
+                <nav className={`fixed top-0 w-full z-50 glass-header ${scrolled ? 'scrolled py-4' : 'py-6'}`}>
+                    <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
                         <div 
-                            className="text-xl font-bold tracking-tight cursor-pointer z-50 transition-colors dark:text-white text-black"
-                            onClick={() => window.scrollTo({top:0, behavior:'smooth'})}
+                            className="text-xl font-bold tracking-tight cursor-pointer z-50 text-white hover:opacity-70 transition-opacity"
+                            onClick={() => { navigateHome(); window.scrollTo({top:0, behavior:'smooth'}); }}
                         >
                             Allif H.
                         </div>
 
-                        {/* DESKTOP NAV */}
                         <div className="hidden md:flex items-center gap-8">
                             {navs.map(nav => (
                                 <button
                                     key={nav.id}
-                                    onClick={() => scrollToSection(nav.id)}
-                                    className="text-sm font-medium transition-colors text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-white"
+                                    onClick={() => handleNavClick(nav.id)}
+                                    className="text-sm font-medium transition-colors text-gray-400 hover:text-white"
                                 >
                                     {nav.label}
                                 </button>
                             ))}
-                            
-                            {/* Dividers */}
-                            <div className="h-4 w-[1px] bg-gray-300 dark:bg-white/10"></div>
-
-                            <button onClick={toggleTheme} className="text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-white transition-colors">
+                            <div className="h-4 w-[1px] bg-white/10"></div>
+                            <button onClick={toggleTheme} className="text-gray-400 hover:text-white transition-colors">
                                 {darkMode ? <Icons.Sun /> : <Icons.Moon />}
                             </button>
-
-                            <Button 
-                                onClick={onContact}
-                                className="dark:text-white text-black hover:border-blue-500"
-                            >
+                            <Button variant="glass" onClick={onContact} className="!py-2 !px-4 !text-xs">
                                 Contact
                             </Button>
                         </div>
 
-                        {/* MOBILE TOGGLE */}
-                        <button className="md:hidden z-50 dark:text-white text-black" onClick={() => setMobileMenu(!mobileMenu)}>
+                        <button className="md:hidden z-50 text-white" onClick={() => setMobileMenu(!mobileMenu)}>
                             {mobileMenu ? <Icons.X /> : <Icons.Menu />}
                         </button>
                     </div>
 
-                    {/* MOBILE MENU */}
                     {mobileMenu && (
-                        <div className="fixed inset-0 bg-white dark:bg-black z-40 flex flex-col items-center justify-center gap-8 animate-fade-in md:hidden">
+                        <div className="fixed inset-0 bg-black z-40 flex flex-col items-center justify-center gap-8 animate-fade-in md:hidden">
                             {navs.map(nav => (
-                                <button
-                                    key={nav.id}
-                                    onClick={() => scrollToSection(nav.id)}
-                                    className="text-2xl font-bold dark:text-white text-black"
-                                >
+                                <button key={nav.id} onClick={() => handleNavClick(nav.id)} className="text-2xl font-bold text-white">
                                     {nav.label}
                                 </button>
                             ))}
-                             <button onClick={() => {toggleTheme();}} className="text-xl text-gray-500">
-                                {darkMode ? 'Light Mode' : 'Dark Mode'}
-                            </button>
-                            <button onClick={() => { onContact(); setMobileMenu(false); }} className="text-xl text-blue-500 font-bold">Contact Me</button>
+                            <button onClick={() => { onContact(); setMobileMenu(false); }} className="text-xl text-brand-accent font-bold">Contact Me</button>
                         </div>
                     )}
                 </nav>
             );
         };
 
-        // --- SECTIONS ---
+        // --- VIEWS ---
 
-        const HomeSection = () => (
-            <section id="home" className="min-h-screen flex flex-col justify-center items-center text-center px-4 relative">
-                {/* Aurora Background (Subtle) */}
-                <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
-                    <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-brand-orange/10 dark:bg-brand-orange/20 rounded-full blur-[100px] animate-blob"></div>
-                    <div className="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-brand-neon/10 dark:bg-brand-neon/10 rounded-full blur-[120px] animate-blob" style={{animationDelay: '2s'}}></div>
-                </div>
-
-                <p className="text-xs font-bold uppercase tracking-[0.3em] text-gray-500 mb-6 animate-slide-up">Portfolio 2026</p>
-                
-                {/* LIQUID TEXT ENGINE 2.0 - ISOLATED EFFECT */}
-                <div className="mb-8 relative z-10">
-                    <h1 className="liquid-text text-6xl md:text-9xl font-bold tracking-tighter leading-none cursor-default select-none">
-                        COMING SOON!
-                    </h1>
-                </div>
-
-                <p className="text-lg md:text-xl text-gray-500 dark:text-gray-400 max-w-xl mx-auto leading-relaxed font-light mb-12 animate-slide-up delay-100">
-                    Redefining corporate identity through human-centric design. <br/>
-                    <strong className="dark:text-white text-black font-medium">Precision. Clarity. Impact.</strong>
-                </p>
-
-                <div className="animate-slide-up delay-200">
-                    <Button 
-                        onClick={() => document.getElementById('projects').scrollIntoView({behavior:'smooth'})}
-                        className="dark:text-white text-black hover:border-blue-500"
-                    >
-                        View Projects <span className="group-hover:translate-x-1 transition-transform"><Icons.ArrowRight /></span>
-                    </Button>
-                </div>
-            </section>
-        );
-
-        const ListItem = ({ index, title, subtitle, desc, image }) => (
-            <div className="group border-b border-gray-200 dark:border-white/10 py-12 transition-colors hover:bg-gray-50 dark:hover:bg-white/5 cursor-default">
-                <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-12 gap-8 items-center">
-                    <div className="md:col-span-1 text-xs text-blue-500 font-mono">
-                        {String(index).padStart(2, '0')}
-                    </div>
-                    <div className="md:col-span-4">
-                        <h3 className="text-2xl font-bold mb-1 text-black dark:text-white">{title}</h3>
-                        <span className="text-xs font-bold uppercase tracking-widest text-gray-500">{subtitle}</span>
-                    </div>
-                    <div className="md:col-span-4">
-                        <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{desc}</p>
-                    </div>
-                    <div className="md:col-span-3 flex justify-end">
-                        {image ? (
-                            <div className="w-32 h-20 rounded-lg overflow-hidden relative opacity-60 group-hover:opacity-100 transition-opacity grayscale group-hover:grayscale-0 border border-gray-200 dark:border-white/10">
-                                <img src={image} alt={title} className="w-full h-full object-cover" />
-                            </div>
-                        ) : (
-                            <div className="w-10 h-10 rounded-full border border-gray-300 dark:border-white/20 flex items-center justify-center group-hover:border-blue-500 group-hover:text-blue-500 transition-all dark:text-white text-black">
-                                <Icons.ArrowRight />
-                            </div>
-                        )}
-                    </div>
-                </div>
-            </div>
-        );
-
-        const ProjectsSection = () => {
-            const projects = [
-                { title: "PETRONAS", sub: "Corporate Branding", desc: "Unified visual grid system for internal marketing across multiple departments.", img: "https://images.unsplash.com/photo-1567789884554-0b844b597180?auto=format&fit=crop&q=80&w=400" },
-                { title: "Ministry of Finance", sub: "Digital Strategy", desc: "Transforming government financial data into digestible social campaigns.", img: "https://images.unsplash.com/photo-1555431189-0fabf2667795?auto=format&fit=crop&q=80&w=400" },
-                { title: "Geno Hotel", sub: "Hospitality", desc: "End-to-end luxury visual experience, from signage to digital assets.", img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=400" },
-            ];
+        const ProjectDetailView = ({ project, onBack }) => {
+            useEffect(() => {
+                window.scrollTo(0, 0);
+            }, []);
 
             return (
-                <section id="projects" className="py-24">
-                    <div className="max-w-7xl mx-auto px-6 mb-16">
-                        <h2 className="text-4xl md:text-5xl font-bold text-black dark:text-white">Selected Project.</h2>
+                <div className="min-h-screen pt-32 pb-20 px-6 max-w-6xl mx-auto animate-slide-up bg-black relative z-20">
+                    <button 
+                        onClick={onBack}
+                        className="mb-8 flex items-center gap-2 text-sm text-gray-500 hover:text-white transition-colors uppercase tracking-widest font-bold"
+                    >
+                        <Icons.ArrowLeft /> Back to Index
+                    </button>
+
+                    <h1 className="text-5xl md:text-8xl font-bold mb-6 text-white leading-[0.9] tracking-tighter">{project.title}</h1>
+                    <div className="flex flex-wrap gap-4 mb-12">
+                        <span className="border border-white/20 px-4 py-1 rounded-full text-xs text-white">{project.sub}</span>
+                        <span className="border border-white/20 px-4 py-1 rounded-full text-xs text-white">2024</span>
                     </div>
-                    <div>
-                        {projects.map((p, i) => (
-                            <ListItem key={i} index={i+1} title={p.title} subtitle={p.sub} desc={p.desc} image={p.img} />
-                        ))}
+                    
+                    <div className="w-full h-[60vh] bg-[#1a1a1a] rounded-3xl overflow-hidden mb-16 shadow-2xl relative border border-white/10 group">
+                        <img src={project.img} alt={project.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+                    </div>
+
+                    <div className="grid md:grid-cols-12 gap-12">
+                        <div className="md:col-span-8 space-y-12">
+                            <div>
+                                <h3 className="text-2xl font-bold mb-6 text-white">The Challenge</h3>
+                                <p className="text-gray-300 leading-relaxed text-lg font-light">
+                                    {project.desc} This required navigating complex corporate structures while injecting a fresh, human-centric visual language. The goal was to modernize the brand perception without alienating existing stakeholders in Shah Alam.
+                                </p>
+                            </div>
+                            <div>
+                                <h3 className="text-2xl font-bold mb-6 text-white">The Solution</h3>
+                                <p className="text-gray-300 leading-relaxed text-lg font-light">
+                                    A strict yet flexible design system was established. We prioritized clarity, accessibility, and visual impact. The result is a cohesive identity that bridges the gap between tradition and innovation.
+                                </p>
+                            </div>
+                        </div>
+                        <div className="md:col-span-4 space-y-6">
+                            <div className="p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm">
+                                <h4 className="font-bold mb-4 text-white text-sm uppercase tracking-widest">Scope</h4>
+                                <ul className="space-y-3 text-sm text-gray-400">
+                                    <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-brand-accent"></div> Brand Identity</li>
+                                    <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-brand-accent"></div> UI/UX Design</li>
+                                    <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-brand-accent"></div> Art Direction</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        // --- SECTIONS ON HOME ---
+
+        const HeroSection = () => {
+            const [scrollY, setScrollY] = useState(0);
+
+            useEffect(() => {
+                const handleScroll = () => setScrollY(window.scrollY);
+                window.addEventListener('scroll', handleScroll);
+                return () => window.removeEventListener('scroll', handleScroll);
+            }, []);
+
+            // Parallax Calculation:
+            // Starts at scale 1.3 (Zoomed In)
+            // As user scrolls down (scrollY increases), scale decreases towards 1.0
+            const scale = Math.max(1, 1.3 - (scrollY * 0.0005));
+            const opacity = Math.max(0, 1 - (scrollY * 0.002)); // Fades out content as you scroll
+
+            return (
+                <section id="home" className="h-screen w-full relative flex flex-col justify-center items-center overflow-hidden">
+                    
+                    {/* PARALLAX BACKGROUND LAYER */}
+                    <div className="fixed inset-0 w-full h-full -z-10">
+                        {/* THE RED FLUID IMAGE */}
+                        <img 
+                            src="image_84dde6.jpg" 
+                            onError={(e) => {e.target.onerror = null; e.target.src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2000&auto=format&fit=crop"}} 
+                            alt="Red Fluid Abstract" 
+                            className="w-full h-full object-cover transition-transform duration-100 ease-out"
+                            style={{ 
+                                transform: `scale(${scale})`,
+                                filter: 'brightness(0.8) contrast(1.1)' 
+                            }}
+                        />
+                        {/* Overlay Gradient for Text Readability */}
+                        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black"></div>
+                    </div>
+
+                    {/* HERO CONTENT - Fades out on scroll */}
+                    <div 
+                        className="relative z-10 text-center px-4"
+                        style={{ opacity: opacity, transform: `translateY(${scrollY * 0.2}px)` }}
+                    >
+                        <div className="inline-block glass-card px-4 py-1.5 rounded-full text-[10px] font-bold tracking-[0.3em] uppercase text-white/80 mb-8 border border-white/20 animate-fade-in">
+                            Portfolio 2026
+                        </div>
+                        
+                        <div className="mb-8">
+                            <h1 className="liquid-text text-6xl md:text-9xl font-bold tracking-tighter leading-none cursor-default select-none animate-slide-up">
+                                COMING SOON!
+                            </h1>
+                        </div>
+
+                        <p className="text-lg md:text-xl text-gray-200 max-w-xl mx-auto leading-relaxed font-light mb-12 animate-slide-up delay-100 drop-shadow-lg">
+                            Redefining corporate identity through human-centric design. <br/>
+                            <strong className="text-white font-medium">Precision. Clarity. Impact.</strong>
+                        </p>
+
+                        <div className="animate-slide-up delay-200">
+                            <Button 
+                                onClick={() => document.getElementById('about').scrollIntoView({behavior:'smooth'})}
+                                variant="primary"
+                            >
+                                Explore Work <span className="group-hover:translate-x-1 transition-transform"><Icons.ArrowRight /></span>
+                            </Button>
+                        </div>
+                    </div>
+                    
+                    {/* Scroll Indicator */}
+                    <div 
+                        className="absolute bottom-10 left-0 right-0 flex flex-col items-center justify-center animate-pulse-slow"
+                        style={{ opacity: opacity }}
+                    >
+                         <span className="text-[10px] uppercase tracking-widest text-white/60 mb-2">Scroll to Discover</span>
+                         <Icons.ArrowDown />
                     </div>
                 </section>
             );
         };
 
         const AboutSection = () => (
-            <section id="about" className="py-24 bg-gray-50 dark:bg-white/5 border-y border-gray-200 dark:border-white/5">
-                 <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <section id="about" className="py-32 bg-black relative z-10 border-t border-white/10">
+                 <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-20 items-center">
                     <div>
-                        <h2 className="text-4xl md:text-5xl font-bold mb-8 text-black dark:text-white">Meet : Creator</h2>
-                        <div className="space-y-6 text-lg text-gray-600 dark:text-gray-400 font-light leading-relaxed">
-                            <p><strong className="text-black dark:text-white font-medium">I am Allif Hanafi.</strong> My journey began in Shah Alam. From the disciplined halls of MSU to the high-stakes environment of MOF and Petronas, I learned that design carries responsibility.</p>
+                        <span className="text-brand-accent font-mono text-xs mb-6 block tracking-widest">01 / CREATOR</span>
+                        <h2 className="text-5xl md:text-6xl font-bold mb-10 text-white tracking-tighter">Meet : Allif Hanafi</h2>
+                        <div className="space-y-8 text-xl text-gray-400 font-light leading-relaxed">
+                            <p><strong className="text-white font-medium">I am Allif Hanafi.</strong> My journey began in Shah Alam. From the disciplined halls of MSU to the high-stakes environment of MOF and Petronas, I learned that design carries responsibility.</p>
                             <p>It tells stories. It represents values. Whether it's capturing a fleeting moment through photography or crafting a corporate identity, my work is honest, thoughtful, and human.</p>
                         </div>
-                        <div className="mt-8 flex gap-4">
-                             <a href="#" className="text-blue-600 dark:text-blue-400 hover:underline text-sm font-medium flex items-center gap-2">
+                        <div className="mt-12 flex flex-wrap gap-6">
+                             <Button variant="outline" onClick={() => {}} className="gap-3">
                                 <Icons.Download /> Download CV
-                             </a>
-                             <a href="#" className="text-blue-600 dark:text-blue-400 hover:underline text-sm font-medium flex items-center gap-2">
-                                <Icons.LinkedIn /> LinkedIn Profile
-                             </a>
+                             </Button>
+                             <Button variant="outline" onClick={() => {}} className="gap-3">
+                                <Icons.LinkedIn /> LinkedIn
+                             </Button>
                         </div>
                     </div>
-                    <div className="h-[500px] rounded-2xl overflow-hidden shadow-2xl relative group border border-gray-200 dark:border-white/10">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Portrait" />
-                        <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
+                    <div className="h-[600px] rounded-2xl overflow-hidden relative group border border-white/10">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0" alt="Portrait" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                        <div className="absolute bottom-8 left-8">
+                            <p className="text-white font-bold text-lg">Creative Lead</p>
+                            <p className="text-brand-accent text-sm">Shah Alam, MY</p>
+                        </div>
                     </div>
                  </div>
             </section>
         );
+
+        const ProjectsSection = ({ onProjectClick }) => {
+            const projects = [
+                { id: 'petronas', title: "PETRONAS", sub: "Corporate Branding", desc: "Unified visual grid system for internal marketing across multiple departments.", img: "https://images.unsplash.com/photo-1567789884554-0b844b597180?auto=format&fit=crop&q=80&w=600" },
+                { id: 'mof', title: "Ministry of Finance", sub: "Digital Strategy", desc: "Transforming government financial data into digestible social campaigns.", img: "https://images.unsplash.com/photo-1555431189-0fabf2667795?auto=format&fit=crop&q=80&w=600" },
+                { id: 'geno', title: "Geno Hotel", sub: "Hospitality", desc: "End-to-end luxury visual experience, from signage to digital assets.", img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=600" },
+            ];
+
+            return (
+                <section id="projects" className="py-32 bg-[#050505] relative z-10 border-t border-white/5">
+                    <div className="max-w-7xl mx-auto px-6 mb-20 flex items-end justify-between">
+                        <div>
+                            <span className="text-gray-500 font-mono text-xs mb-4 block tracking-widest">02 / WORK</span>
+                            <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tighter">Selected <span className="text-gray-700">Works.</span></h2>
+                        </div>
+                    </div>
+                    <div>
+                        {projects.map((p, i) => (
+                            <div 
+                                key={i}
+                                onClick={() => onProjectClick(p)}
+                                className="group border-b border-white/10 py-16 transition-all hover:bg-white/5 cursor-pointer relative overflow-hidden"
+                            >
+                                <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-12 gap-8 items-center relative z-10">
+                                    <div className="md:col-span-1 text-xs text-brand-accent font-mono opacity-50 group-hover:opacity-100">
+                                        {String(i+1).padStart(2, '0')}
+                                    </div>
+                                    <div className="md:col-span-5">
+                                        <h3 className="text-4xl font-bold mb-2 text-white group-hover:translate-x-2 transition-transform duration-300">{p.title}</h3>
+                                        <span className="text-xs font-bold uppercase tracking-widest text-gray-500 group-hover:text-white transition-colors">{p.sub}</span>
+                                    </div>
+                                    <div className="md:col-span-4">
+                                        <p className="text-gray-400 text-sm leading-relaxed group-hover:text-white transition-colors line-clamp-2">{p.desc}</p>
+                                    </div>
+                                    <div className="md:col-span-2 flex justify-end items-center">
+                                        <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center group-hover:border-brand-accent group-hover:bg-brand-accent group-hover:text-white transition-all text-white">
+                                            <Icons.ArrowRight />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+            );
+        };
 
         const ExpertiseSection = () => {
              const expertise = [
@@ -407,35 +523,46 @@
             ];
 
             return (
-                <section id="expertise" className="py-24">
-                    <div className="max-w-7xl mx-auto px-6 mb-16">
-                        <h2 className="text-4xl md:text-5xl font-bold text-black dark:text-white">Expertise.</h2>
+                <section id="expertise" className="py-32 bg-black border-t border-white/5 relative z-10">
+                    <div className="max-w-7xl mx-auto px-6 mb-20">
+                         <span className="text-gray-500 font-mono text-xs mb-4 block tracking-widest">03 / CAPABILITIES</span>
+                        <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tighter">Expertise.</h2>
                     </div>
-                    <div>
+                    <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto px-6">
                         {expertise.map((e, i) => (
-                            <ListItem key={i} index={i+1} title={e.title} subtitle={e.sub} desc={e.desc} />
+                            <div key={i} className="bg-white/5 border border-white/5 p-10 rounded-2xl hover:border-brand-accent/50 transition-colors group">
+                                <span className="text-xs text-gray-500 mb-8 block font-mono">0{i+1}</span>
+                                <h3 className="text-2xl font-bold mb-4 text-white">{e.title}</h3>
+                                <p className="text-gray-400 leading-relaxed text-sm">{e.desc}</p>
+                            </div>
                         ))}
                     </div>
                 </section>
             );
         };
 
-        const Footer = () => (
-            <footer className="py-12 border-t border-gray-200 dark:border-white/10 bg-white dark:bg-black text-sm transition-colors">
-                <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-                    <div className="text-gray-500">
-                        &copy; 2026 Allif Hanafi. All rights reserved.
-                    </div>
-                    <div className="flex gap-8">
-                        {['LinkedIn', 'Instagram', 'Behance'].map(link => (
-                            <a key={link} href="#" className="text-gray-500 hover:text-black dark:hover:text-white transition-colors">{link}</a>
-                        ))}
-                    </div>
-                    <div className="text-gray-500 flex items-center gap-2">
-                        Made in Shah Alam <span className="w-2 h-2 rounded-full bg-blue-500"></span>
+        const ContactSection = ({ onOpenModal }) => (
+            <section id="contact" className="py-32 bg-[#080808] border-t border-white/5 relative z-10 text-center">
+                <div className="max-w-4xl mx-auto px-6">
+                    <h2 className="text-5xl md:text-8xl font-bold text-white mb-8 tracking-tighter">Let's Talk.</h2>
+                    <p className="text-xl text-gray-400 mb-12 font-light">
+                        Ready to elevate your visual identity? Based in Shah Alam, available for global impact.
+                    </p>
+                    <div className="flex justify-center gap-6">
+                        <Button variant="primary" onClick={onOpenModal} className="!px-8 !py-4 !text-lg">
+                            Get in Touch
+                        </Button>
                     </div>
                 </div>
-            </footer>
+                
+                <div className="mt-32 border-t border-white/10 pt-12 max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-600">
+                    <p>&copy; 2026 Allif Hanafi. Crafted in Shah Alam.</p>
+                    <div className="flex gap-6 mt-4 md:mt-0">
+                        <a href="#" className="hover:text-white transition-colors">LinkedIn</a>
+                        <a href="#" className="hover:text-white transition-colors">Instagram</a>
+                    </div>
+                </div>
+            </section>
         );
 
         // --- MAIN APP ---
@@ -443,6 +570,7 @@
         const App = () => {
             const [darkMode, setDarkMode] = useState(true);
             const [contactOpen, setContactOpen] = useState(false);
+            const [currentProject, setCurrentProject] = useState(null);
 
             // Theme Toggle Logic
             useEffect(() => {
@@ -457,21 +585,32 @@
             }, [darkMode]);
 
             return (
-                <div className="min-h-screen selection:bg-blue-500 selection:text-white relative transition-colors duration-500">
+                <div className="min-h-screen bg-black text-white selection:bg-brand-accent selection:text-white relative">
+                    
                     <NavBar 
                         darkMode={darkMode} 
                         toggleTheme={() => setDarkMode(!darkMode)}
                         onContact={() => setContactOpen(true)}
+                        navigateHome={() => setCurrentProject(null)}
                     />
                     
                     <main>
-                        <HomeSection />
-                        <ProjectsSection />
-                        <AboutSection />
-                        <ExpertiseSection />
+                        {currentProject ? (
+                            <ProjectDetailView 
+                                project={currentProject} 
+                                onBack={() => setCurrentProject(null)} 
+                            />
+                        ) : (
+                            <>
+                                <HeroSection />
+                                <AboutSection />
+                                <ProjectsSection onProjectClick={setCurrentProject} />
+                                <ExpertiseSection />
+                                <ContactSection onOpenModal={() => setContactOpen(true)} />
+                            </>
+                        )}
                     </main>
 
-                    <Footer />
                     <ContactModal isOpen={contactOpen} onClose={() => setContactOpen(false)} />
                 </div>
             );
