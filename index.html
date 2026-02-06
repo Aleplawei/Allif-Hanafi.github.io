@@ -97,6 +97,27 @@
             color: #ffffff;
         }
 
+        /* Loading State */
+        #root:empty {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #000;
+            color: #333;
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+        #root:empty::after {
+            content: "Initializing System...";
+            animation: pulse 1.5s infinite;
+        }
+
         /* --- Liquid Engine 2.0 (Text) --- */
         .liquid-text {
             background-size: 200% auto;
@@ -170,6 +191,19 @@
     <div id="root"></div>
 
     <script type="text/babel">
+        // Error Trap for easy debugging
+        window.onerror = function(message, source, lineno, colno, error) {
+            console.error(error);
+            const root = document.getElementById('root');
+            if(root && root.innerHTML === "") {
+                root.innerHTML = `<div style="color:red; padding:20px; text-align:center;">
+                    <h3>System Error</h3>
+                    <p>${message}</p>
+                    <p style="font-size:10px; color:#555">Check Console for details</p>
+                </div>`;
+            }
+        };
+
         const { useState, useEffect, useRef } = React;
 
         // --- ICONS ---
@@ -196,11 +230,12 @@
                 glass: "bg-white/10 backdrop-blur-md border border-white/20 text-white",
                 outline: "border border-white/20 text-white hover:bg-white/5"
             };
+            const activeVariant = variants[variant] || variants.primary;
             
             return (
                 <button 
                     onClick={onClick} 
-                    className={`${baseClass} ${variants[variant]} ${className}`}
+                    className={`${baseClass} ${activeVariant} ${className}`}
                 >
                     {children}
                 </button>
@@ -370,21 +405,18 @@
                 return () => window.removeEventListener('scroll', handleScroll);
             }, []);
 
-            // Parallax Calculation:
-            // Starts at scale 1.3 (Zoomed In)
-            // As user scrolls down (scrollY increases), scale decreases towards 1.0
+            // Parallax Calculation
             const scale = Math.max(1, 1.3 - (scrollY * 0.0005));
-            const opacity = Math.max(0, 1 - (scrollY * 0.002)); // Fades out content as you scroll
+            const opacity = Math.max(0, 1 - (scrollY * 0.002));
 
             return (
                 <section id="home" className="h-screen w-full relative flex flex-col justify-center items-center overflow-hidden">
                     
                     {/* PARALLAX BACKGROUND LAYER */}
                     <div className="fixed inset-0 w-full h-full -z-10">
-                        {/* THE RED FLUID IMAGE */}
                         <img 
                             src="image_84dde6.jpg" 
-                            onError={(e) => {e.target.onerror = null; e.target.src="77d15458-a799-4f15-917c-b4bcfc04e960.jpg"}} 
+                            onError={(e) => {e.target.onerror = null; e.target.src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2000&auto=format&fit=crop"}} 
                             alt="Red Fluid Abstract" 
                             className="w-full h-full object-cover transition-transform duration-100 ease-out"
                             style={{ 
@@ -392,22 +424,21 @@
                                 filter: 'brightness(0.8) contrast(1.1)' 
                             }}
                         />
-                        {/* Overlay Gradient for Text Readability */}
                         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black"></div>
                     </div>
 
-                    {/* HERO CONTENT - Fades out on scroll */}
+                    {/* HERO CONTENT */}
                     <div 
                         className="relative z-10 text-center px-4"
                         style={{ opacity: opacity, transform: `translateY(${scrollY * 0.2}px)` }}
                     >
                         <div className="inline-block glass-card px-4 py-1.5 rounded-full text-[10px] font-bold tracking-[0.3em] uppercase text-white/80 mb-8 border border-white/20 animate-fade-in">
-                            I'm Allif H. - 
+                            Portfolio 2026
                         </div>
                         
                         <div className="mb-8">
                             <h1 className="liquid-text text-6xl md:text-9xl font-bold tracking-tighter leading-none cursor-default select-none animate-slide-up">
-                                GRAPHIC DESIGNER
+                                COMING SOON!
                             </h1>
                         </div>
 
@@ -421,7 +452,7 @@
                                 onClick={() => document.getElementById('about').scrollIntoView({behavior:'smooth'})}
                                 variant="primary"
                             >
-                                <center> Explore Work <span className="group-hover:translate-x-1 transition-transform"><Icons.ArrowRight /></span>
+                                Explore Work <span className="group-hover:translate-x-1 transition-transform"><Icons.ArrowRight /></span>
                             </Button>
                         </div>
                     </div>
@@ -458,7 +489,7 @@
                         </div>
                     </div>
                     <div className="h-[600px] rounded-2xl overflow-hidden relative group border border-white/10">
-                        <img src="gcgfuyiyugi.jpg" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0" alt="Portrait" />
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0" alt="Portrait" />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
                         <div className="absolute bottom-8 left-8">
                             <p className="text-white font-bold text-lg">Creative Lead</p>
@@ -572,7 +603,6 @@
             const [contactOpen, setContactOpen] = useState(false);
             const [currentProject, setCurrentProject] = useState(null);
 
-            // Theme Toggle Logic
             useEffect(() => {
                 const root = document.documentElement;
                 if (darkMode) {
@@ -618,9 +648,7 @@
 
         const root = ReactDOM.createRoot(document.getElementById('root'));
         root.render(<App />);
+        console.log("Portfolio System Online.");
     </script>
 </body>
 </html>
-
-
-
